@@ -1,5 +1,6 @@
 <template>
     <section id="news">
+        <Breadcrumbs :breadcrumbs-u-r-l="context['@components']['breadcrumbs']['@id']"/>
         <h2 class="title">{{context.title}}</h2>
         <h6 class="description">{{context.description}}</h6>
         <span v-html="context.text.data"></span>
@@ -8,8 +9,10 @@
 
 <script>
     import {basecomponent} from 'plone-vue';
+    import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
 
     export default {
+        components: {Breadcrumbs},
         mixins: [basecomponent],
         name: "NewsItem"
     }

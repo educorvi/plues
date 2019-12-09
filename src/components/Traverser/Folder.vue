@@ -1,5 +1,6 @@
 <template>
     <section id="folder">
+        <Breadcrumbs :breadcrumbs-u-r-l="context['@components']['breadcrumbs']['@id']"/>
         <h1>{{context.title}}</h1>
         <ul>
             <li :key="item['@id']" v-for="item in context.items">
@@ -22,8 +23,10 @@
 
 
     import {basecomponent} from 'plone-vue';
+    import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
 
     export default {
+        components: {Breadcrumbs},
         mixins: [basecomponent],
         name: "folder",
     }

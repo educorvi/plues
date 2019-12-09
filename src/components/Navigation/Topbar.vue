@@ -1,12 +1,12 @@
 <template>
-    <b-navbar id="bar" toggleable="lg">
+    <b-navbar id="bar" toggleable="lg" variant="light">
         <b-navbar-brand @click="traverse(rootData)" href="#">
-            <span class="navbar-brand"><img id="logo" src="../assets/logo.png"/>
+            <span class="navbar-brand"><img id="logo" src="../../assets/logo.png"/>
            {{rootData.title}}</span>
         </b-navbar-brand>
         <b-navbar-toggle target="collapse"></b-navbar-toggle>
 
-        <b-collapse class="ml-n3 mr-n3" id="collapse" is-nav style="background: white">
+        <b-collapse class="mt-n2" id="collapse" is-nav>
             <b-navbar-nav class="ml-auto">
                 <b-nav-item v-for="(item, index) in navigation" :key="index" class="text-center" @click="traverse(item)">{{item.title}}</b-nav-item>
             </b-navbar-nav>
@@ -30,7 +30,7 @@
     }
 
     #bar {
-        position: fixed;
+        position: sticky;
         /* fixing the position takes it out of html flow - knows
                           nothing about where to locate itself except by browser
                           coordinates */
@@ -39,6 +39,5 @@
         width: 100vw; /* take up the full browser width */
         z-index: 200; /* high z index so other content scrolls underneath */
         background: white;
-        height: 60px;
     }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid" id="app" style="margin-top: 60px">
+    <div id="app">
         <div >
             <Topbar></Topbar>
 
@@ -8,7 +8,7 @@
             <!--      <router-link to="/about">About</router-link>-->
             <!--    </div>-->
             <!--    <router-view/>-->
-            <traverser-view></traverser-view>
+            <traverser-view class="container-fluid"></traverser-view>
         </div>
     </div>
 </template>
@@ -17,7 +17,7 @@
 
 </style>
 <script>
-    import Topbar from "@/components/Topbar";
+    import Topbar from "@/components/Navigation/Topbar";
 
     export default {
         components: {Topbar}
