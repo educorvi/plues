@@ -51,6 +51,6 @@
       "src/components/**/*.vue",
       "src/components/**/**/*.vue"
     ],
-    "outDir": "doc"
+    "outDir": "docs"
   }
 }
