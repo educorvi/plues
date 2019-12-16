@@ -16,10 +16,17 @@
 <script>
     import axios from "axios";
     import {mapGetters} from "vuex";
-
+    //Component, der die sogenannten Breadcrumbs realisiert
+    // @group Navigation
     export default {
-        name: "breadcrumbs",
-        props: ["breadcrumbsURL"],
+        name: "Breadcrumbs",
+        props: {
+            //Die RestApiUrl zu den @breadcrumbs (z. B. https://www.beispielwebsite.com/ploneroot/@breadcrumbs)
+            breadcrumbsURL: {
+                type: String,
+                required: true
+            }
+        },
         data() {
             return {
                 breadcrumbs: []
@@ -28,9 +35,7 @@
         computed: {
             ...mapGetters(["rootData"])
         },
-        methods: {
-
-        },
+        methods: {},
         mounted() {
             axios.get(this.breadcrumbsURL, {
                 headers: {

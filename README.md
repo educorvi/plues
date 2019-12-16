@@ -1,4 +1,4 @@
-# plone_frontend
+# Plues
 
 ## Project setup
 ```

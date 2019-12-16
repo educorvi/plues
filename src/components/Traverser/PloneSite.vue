@@ -9,6 +9,9 @@
 
     import {basecomponent} from 'plone-vue';
 
+    // @group TraverserViews
+    //Component um Plone PloneSites darzustellen.
+    //Nicht weiter interessant, da bei Aufruf der Site gleich zum ersten Child-Item weiter traversiert wird
     export default {
         mixins: [basecomponent],
         name: "PloneSite",

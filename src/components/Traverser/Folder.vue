@@ -25,10 +25,12 @@
     import {basecomponent} from 'plone-vue';
     import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
 
+    // @group TraverserViews
+    //Component um Plone Folders darzustellen
     export default {
         components: {Breadcrumbs},
         mixins: [basecomponent],
-        name: "folder",
+        name: "Folder",
     }
 </script>
 

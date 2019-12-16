@@ -1,19 +1,61 @@
 <template>
     <section id="event">
         <Breadcrumbs :breadcrumbs-u-r-l="context['@components']['breadcrumbs']['@id']"/>
-        <h2 class="title">{{context.title}}</h2>
-        <h6 class="description">{{context.description}}</h6>
-        <p class="mb-1">Startet am {{new Date(context.start).toLocaleString()}}</p>
-        <p>Endet am {{new Date(context.end).toLocaleString()}}</p>
+        <div class="w-100 mb-4" style="text-align: center">
+            <h2>{{context.title}}</h2>
+            <h6>{{context.description}}</h6>
+        </div>
+
+        <div class="container-fluid mb-2">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <span v-html="context.text.data"/>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <b-card no-body>
+                        <Subcard title="Wann" visible>
+                            <TimeDurationDisplay :end="new Date(context.end)" :open-end="context.open_end"
+                                                 :start="new Date(context.start)" :whole-day="context.whole_day"/>
+                        </Subcard>
+                        <Subcard responsiv title="Wo" v-if="context.location != null" visible>
+                            <iframe :src="'https://www.google.com/maps/embed/v1/place?q='+context.location+'w&key=AIzaSyAcfdlMIjXmOsbi_mdtPSP0r8xwxVodBrU&zoom=12'"
+                                    class="mb-n2"
+                                    height="100%"
+                                    style="border: none"
+                                    width="100%"></iframe>
+                        </Subcard>
+                        <Subcard title="Teilnehmer" v-if="context.attendees.length!==0">
+                            <ul>
+                                <li :key="index" v-for="(attendee, index) in context.attendees">{{attendee}}</li>
+                            </ul>
+                        </Subcard>
+                        <Subcard title="Kontaktperson"
+                                 v-if="context.contact_name!=null||context.contact_email!=null||context.contact_email!=null">
+                            <h5>{{context.contact_name}}</h5>
+                            <p class="mb-1">{{context.contact_email}}</p>
+                            <p>{{context.contact_phone}}</p>
+                        </Subcard>
+                    </b-card>
+                </div>
+            </div>
+            <p class="text-muted float-right mt-4">Zuletzt verändert am {{new
+                Date(context.modified).toLocaleString()}}</p>
+        </div>
+
+
     </section>
 </template>
 
 <script>
     import {basecomponent} from 'plone-vue';
     import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
+    import TimeDurationDisplay from "@/components/Helper/EventItem/TimeDurationDisplay";
+    import Subcard from "@/components/Helper/EventItem/Subcard";
 
+    // @group TraverserViews
+    //Component um Plone EventItems darzustellen
     export default {
-        components: {Breadcrumbs},
+        components: {Subcard, TimeDurationDisplay, Breadcrumbs},
         mixins: [basecomponent],
         name: "EventItem"
     }

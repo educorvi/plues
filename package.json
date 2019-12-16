@@ -1,6 +1,6 @@
 {
-  "name": "plone_frontend",
-  "version": "0.1.1",
+  "name": "plues",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -43,5 +43,14 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "vuese": {
+    "include": [
+      "**/*.vue",
+      "src/store/*.js",
+      "src/components/**/*.vue",
+      "src/components/**/**/*.vue"
+    ],
+    "outDir": "doc"
+  }
 }

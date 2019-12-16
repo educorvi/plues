@@ -2,7 +2,7 @@
     <section id="plone-site">
         <Breadcrumbs :breadcrumbs-u-r-l="context['@components']['breadcrumbs']['@id']"/>
         <h1>{{context.title}}</h1>
-        <span v-html="context.text.data"></span>
+        <span v-html="context.text.data"/>
     </section>
 </template>
 
@@ -11,11 +11,12 @@
 
     import {basecomponent} from 'plone-vue';
     import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
-
+    // @group TraverserViews
+    //Component um Plone Documents darzustellen
     export default {
         components: {Breadcrumbs},
         mixins: [basecomponent],
-        name: "document",
+        name: "Document",
     }
 </script>
 

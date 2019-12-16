@@ -16,6 +16,8 @@
     import {basecomponent} from 'plone-vue';
     import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
 
+    // @group TraverserViews
+    // Component um Plone Collections darzustellen
     export default {
         components: {Breadcrumbs},
         mixins: [basecomponent],

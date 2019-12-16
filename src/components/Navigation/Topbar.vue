@@ -1,14 +1,16 @@
 <template>
-    <b-navbar id="bar" toggleable="lg" variant="light">
+    <b-navbar class="mb-2" id="bar" toggleable="lg" variant="light">
         <b-navbar-brand @click="traverse(rootData)" href="#">
-            <span class="navbar-brand"><img id="logo" src="../../assets/logo.png"/>
+            <span class="navbar-brand"><img alt="Logo" id="logo" src="../../assets/logo.png"/>
            {{rootData.title}}</span>
         </b-navbar-brand>
-        <b-navbar-toggle target="collapse"></b-navbar-toggle>
+        <b-navbar-toggle target="collapse"/>
 
         <b-collapse class="mt-n2" id="collapse" is-nav>
             <b-navbar-nav class="ml-auto">
-                <b-nav-item v-for="(item, index) in navigation" :key="index" class="text-center" @click="traverse(item)">{{item.title}}</b-nav-item>
+                <b-nav-item :key="index" @click="traverse(item)" class="text-center"
+                            v-for="(item, index) in navigation">{{item.title}}
+                </b-nav-item>
             </b-navbar-nav>
         </b-collapse>
     </b-navbar>
@@ -16,6 +18,9 @@
 
 <script>
     import {mapGetters} from 'vuex';
+    // @vuese
+    // Navigation Bar für die App, deren NavItems sich dynamisch an Plone anpassen
+    // @group Navigation
     export default {
         name: "Topbar",
         computed: {
