@@ -3,6 +3,7 @@
             v-if="getCreatorsString!==''">, erstellt von {{getCreatorsString}}</span></p>
 </template>
 <script>
+    //@Group Helper
     export default {
         name: 'EditedLine',
         props: {
