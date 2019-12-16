@@ -62,7 +62,7 @@ export default new Vuex.Store({
         navigation:
             state => {
                 if (state.navigation === null) {
-                    axios.get(state.config.rootURL + "/@navigation", {
+                    axios.get(state.config.rootURL + "/@navigation?expand.navigation.depth=2", {
                         headers: {
                             Accept: "application/json"
                         }

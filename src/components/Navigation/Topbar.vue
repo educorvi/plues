@@ -8,9 +8,19 @@
 
         <b-collapse class="mt-n2" id="collapse" is-nav>
             <b-navbar-nav class="ml-auto">
-                <b-nav-item :key="index" @click="traverse(item)" class="text-center"
-                            v-for="(item, index) in navigation">{{item.title}}
-                </b-nav-item>
+                <span :key="index" v-for="(item, index) in navigation">
+                    <b-nav-item @click="traverse(item)" class="text-center" v-if="item.items===''">
+                        {{item.title}}
+                     </b-nav-item>
+                    <b-nav-item-dropdown :text="item.title" class="text-center" right v-else>
+                        <b-dropdown-item @click="traverse(item)"
+                                         class="border-bottom border-light">Alle {{item.title}}</b-dropdown-item>
+                        <b-dropdown-item :key="lItem.title" @click="traverse(lItem)" v-for="lItem in item.items">
+                            {{lItem.title}}
+                        </b-dropdown-item>
+                    </b-nav-item-dropdown>
+                </span>
+
             </b-navbar-nav>
         </b-collapse>
     </b-navbar>
