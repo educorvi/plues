@@ -14,7 +14,7 @@
                      </b-nav-item>
                     <b-nav-item-dropdown :text="item.title" class="text-center" right v-else>
                         <b-dropdown-item @click="traverse(item)"
-                                         class="border-bottom border-light">Alle {{item.title}}</b-dropdown-item>
+                                         class="border-bottom border-light"><b>Alle {{item.title}}</b></b-dropdown-item>
                         <b-dropdown-item :key="lItem.title" @click="traverse(lItem)" v-for="lItem in item.items">
                             {{lItem.title}}
                         </b-dropdown-item>

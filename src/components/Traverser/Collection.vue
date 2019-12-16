@@ -1,12 +1,15 @@
 <template>
     <section id="collection">
         <Breadcrumbs :breadcrumbs-u-r-l="context['@components']['breadcrumbs']['@id']"/>
-        <h1>{{context.title}}</h1>
-        <ul>
-            <li v-for="item in context.items" :key="item['@id']">
-                <traverser-link :class="item.title" :item="item">{{item.title}}</traverser-link>
-            </li>
-        </ul>
+        <div class="ml-lg-4 mr-lg-4" v-if="data!=null">
+            <h2>{{data.title}}</h2>
+            <div class="container-fluid">
+                <b-card-group deck>
+                    <collection-card :item="item" :key="'cc_'+index" v-for="(item, index) in data.items"/>
+                </b-card-group>
+            </div>
+        </div>
+        <b-spinner class="spinner" v-else variant="primary"/>
     </section>
 </template>
 
@@ -15,16 +18,39 @@
 
     import {basecomponent} from 'plone-vue';
     import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
+    import CollectionCard from "@/components/Helper/Collection/CollectionCard";
+    import axios from "axios"
 
     // @group TraverserViews
     // Component um Plone Collections darzustellen
     export default {
-        components: {Breadcrumbs},
+        components: {CollectionCard, Breadcrumbs},
         mixins: [basecomponent],
         name: "Collection",
+        data() {
+            return {
+                //Im Grunde dieselben Daten wie in Context, nur mit zusätlichen Feldern
+                data: null
+            }
+        },
+        mounted() {
+            axios.get(this.context["@id"] + "/?metadata_fields=modified", {
+                headers: {
+                    Accept: "application/json"
+                }
+            }).then(res => this.data = res.data)
+        }
     }
 </script>
 
 <style scoped>
+
+    .spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -50px;
+        margin-top: -50px;
+    }
 
 </style>
