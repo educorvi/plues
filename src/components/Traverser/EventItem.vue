@@ -38,8 +38,7 @@
                     </b-card>
                 </div>
             </div>
-            <p class="text-muted float-right mt-4">Zuletzt verändert am {{new
-                Date(context.modified).toLocaleString()}}</p>
+            <EditedLine :context="context"/>
         </div>
 
 
@@ -51,16 +50,14 @@
     import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
     import TimeDurationDisplay from "@/components/Helper/EventItem/TimeDurationDisplay";
     import Subcard from "@/components/Helper/EventItem/Subcard";
+    import EditedLine from "@/components/Helper/EditedLine";
 
     // @group TraverserViews
     //Component um Plone EventItems darzustellen
     export default {
-        components: {Subcard, TimeDurationDisplay, Breadcrumbs},
+        components: {EditedLine, Subcard, TimeDurationDisplay, Breadcrumbs},
         mixins: [basecomponent],
         name: "EventItem"
     }
 </script>
 
-<style scoped>
-
-</style>
