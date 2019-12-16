@@ -49,8 +49,10 @@
       "**/*.vue",
       "src/store/*.js",
       "src/components/**/*.vue",
-      "src/components/**/**/*.vue"
+      "src/components/**/**/*.vue",
+      "src/*.vue"
     ],
-    "outDir": "docs"
+    "outDir": "docs",
+    "title": "Plues Doc"
   }
 }

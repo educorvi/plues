@@ -1,5 +1,6 @@
 # Plues
 
+Dieses Projekt hat es sich zum Ziel gesetzt, einen Vue.js basierten Frontend für Plone zu entwickeln.
 ## Project setup
 ```
 yarn install
