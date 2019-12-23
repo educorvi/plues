@@ -9,7 +9,7 @@
                 </b-card-group>
             </div>
         </div>
-        <b-spinner class="spinner" v-else variant="primary"/>
+        <CustomSpinner v-else/>
     </section>
 </template>
 
@@ -20,11 +20,12 @@
     import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
     import CollectionCard from "@/components/Helper/Collection/CollectionCard";
     import axios from "axios"
+    import CustomSpinner from "@/components/Helper/CustomSpinner";
 
     // @group TraverserViews
     // Component um Plone Collections darzustellen
     export default {
-        components: {CollectionCard, Breadcrumbs},
+        components: {CustomSpinner, CollectionCard, Breadcrumbs},
         mixins: [basecomponent],
         name: "Collection",
         data() {

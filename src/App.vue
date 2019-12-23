@@ -25,15 +25,6 @@
         z-index: 2;
         box-shadow: 0 4px 4px -2px rgba(0, 0, 0, .2), 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12)
     }
-
-    .spinner {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-left: -50px;
-        margin-top: -50px;
-        background-size: 100%;
-    }
 </style>
 <script>
     import Topbar from "@/components/Navigation/Topbar";

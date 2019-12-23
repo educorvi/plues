@@ -29,6 +29,7 @@
         },
         data() {
             return {
+                //Das Arrays aus Breadcrumbs
                 breadcrumbs: []
             }
         },

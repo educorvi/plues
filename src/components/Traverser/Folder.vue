@@ -9,7 +9,7 @@
                 </li>
             </ul>
         </div>
-        <b-spinner class="spinner" v-else variant="primary"/>
+        <CustomSpinner/>
     </section>
 </template>
 
@@ -27,11 +27,12 @@
 
     import {basecomponent} from 'plone-vue';
     import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
+    import CustomSpinner from "@/components/Helper/CustomSpinner";
 
     // @group TraverserViews
     //Component um Plone Folders darzustellen
     export default {
-        components: {Breadcrumbs},
+        components: {CustomSpinner, Breadcrumbs},
         mixins: [basecomponent],
         name: "Folder",
         data() {
@@ -50,6 +51,3 @@
     }
 </script>
 
-<style scoped>
-
-</style>

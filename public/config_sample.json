@@ -1,0 +1,5 @@
+{
+  "apiRoot": "http://localhost:8080/",
+  "ploneRoot": "plone",
+  "mapsApiKey": "googleMapsAPIKey"
+}
