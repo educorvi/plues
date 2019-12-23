@@ -41,6 +41,7 @@ export default new Vuex.Store({
                         }
                     }).then(res => {
                         state.rootData = res.data;
+                        document.title = res.data.title;
                     });
                 }
 

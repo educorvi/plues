@@ -18,7 +18,7 @@
                                                  :start="new Date(context.start)" :whole-day="context.whole_day"/>
                         </Subcard>
                         <Subcard responsiv title="Wo" v-if="context.location != null" visible>
-                            <iframe :src="'https://www.google.com/maps/embed/v1/place?q='+context.location+'w&key=AIzaSyAcfdlMIjXmOsbi_mdtPSP0r8xwxVodBrU&zoom=12'"
+                            <iframe :src="'https://www.google.com/maps/embed/v1/place?q='+context.location+'w&key='+config.mapsApiKey+'&zoom=12'"
                                     class="mb-n2"
                                     height="100%"
                                     style="border: none"
@@ -51,13 +51,17 @@
     import TimeDurationDisplay from "@/components/Helper/EventItem/TimeDurationDisplay";
     import Subcard from "@/components/Helper/EventItem/Subcard";
     import EditedLine from "@/components/Helper/EditedLine";
+    import {mapGetters} from 'vuex';
 
     // @group TraverserViews
     //Component um Plone EventItems darzustellen
     export default {
         components: {EditedLine, Subcard, TimeDurationDisplay, Breadcrumbs},
         mixins: [basecomponent],
-        name: "EventItem"
+        name: "EventItem",
+        computed: {
+            ...mapGetters(["config"])
+        }
     }
 </script>
 
