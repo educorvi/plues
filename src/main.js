@@ -5,7 +5,7 @@ import router from './router'
 import store from './store'
 import Traverser from 'plone-vue';
 import BootstrapVue from "bootstrap-vue";
-import './custom.css';
+import './style.scss';
 import axios from 'axios';
 
 Vue.config.productionTip = false;

@@ -9,30 +9,21 @@
                 </li>
             </ul>
         </div>
-        <CustomSpinner/>
+        <CustomSpinner v-else/>
+        <Batcher :item="context" v-if="context.batching!==null"/>
     </section>
 </template>
 
 <script>
-    /* eslint-disable no-console */
-
-    // export default {
-    //     mixins: [basecomponent],
-    //     name: "folder",
-    //     created() {
-    //         console.log("Hello World");
-    //     }
-    // }
-
-
     import {basecomponent} from 'plone-vue';
     import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
     import CustomSpinner from "@/components/Helper/CustomSpinner";
+    import Batcher from "@/components/Helper/Batcher";
 
     // @group TraverserViews
     //Component um Plone Folders darzustellen
     export default {
-        components: {CustomSpinner, Breadcrumbs},
+        components: {Batcher, CustomSpinner, Breadcrumbs},
         mixins: [basecomponent],
         name: "Folder",
         data() {

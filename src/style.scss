@@ -1,0 +1,15 @@
+@import "public/custom";
+
+@function set-navbar-color($color) {
+  @if (lightness($color) > 50) {
+    @return #1b1b1b; // Lighter backgorund, return dark color
+  } @else {
+    @return #dcdcdc; // Darker background, return light color
+  }
+}
+
+$navbar-light-color: set-navbar-color($navbar-custom-color);
+
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap-vue/src/index";

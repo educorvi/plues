@@ -35,7 +35,7 @@
             }
         },
         mounted() {
-            axios.get(this.context["@id"] + "/?metadata_fields=modified", {
+            axios.get(this.context["@id"] + "/?metadata_fields=modified&metadata_fields=start", {
                 headers: {
                     Accept: "application/json"
                 }

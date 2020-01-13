@@ -1,7 +1,8 @@
 <template>
-    <b-card @click="traverse(item)" class="ccard mb-3" no-body>
+    <b-card @click="traverse(item)" class="ccard mb-3 lccard" no-body>
         <b-card-header>
             {{item.title}}
+            <template v-if="item['@type'] === 'Event'">, <b>{{new Date(item.start).toLocaleDateString()}}</b></template>
         </b-card-header>
         <b-card-body>
             <span v-if="item.description!==''">{{item.description}}</span>
@@ -29,5 +30,8 @@
 </script>
 
 <style scoped>
+    .lccard {
+        min-width: 15rem;
+    }
 
 </style>

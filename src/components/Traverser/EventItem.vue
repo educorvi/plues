@@ -22,7 +22,8 @@
                                     class="mb-n2"
                                     height="100%"
                                     style="border: none"
-                                    width="100%"></iframe>
+                                    width="100%"
+                            />
                         </Subcard>
                         <Subcard title="Teilnehmer" v-if="context.attendees.length!==0">
                             <ul>

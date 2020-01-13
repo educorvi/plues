@@ -1,8 +1,10 @@
 <template>
-    <b-navbar class="mb-2" id="bar" toggleable="lg" variant="light">
+    <b-navbar class="mb-2" id="bar" toggleable="lg" type="light" v-if="rootData!==null">
         <b-navbar-brand @click="traverse(rootData)" href="#">
-            <span class="navbar-brand"><img alt="Logo" id="logo" src="../../assets/logo.png"/>
-           {{rootData.title}}</span>
+            <div class="navbar-brand">
+                <img alt="Logo" id="logo" src="../../assets/logo.png">
+                <h5 class="ml-2" style="display: inline;"></h5>
+            </div>
         </b-navbar-brand>
         <b-navbar-toggle target="collapse"/>
 
@@ -39,7 +41,10 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+    @import "../../../public/custom.scss";
+
+
     #logo {
         height: 40px;
     }
@@ -53,6 +58,11 @@
         top: 0; /* top left corner should start at topmost spot */
         width: 100vw; /* take up the full browser width */
         z-index: 200; /* high z index so other content scrolls underneath */
-        background: white;
+        background: $navbar-custom-color;
     }
+
+    #bar > * {
+        color: white !important;
+    }
+
 </style>
