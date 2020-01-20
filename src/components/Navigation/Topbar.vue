@@ -1,6 +1,6 @@
 <template>
     <b-navbar class="mb-2" id="bar" toggleable="lg" type="light" v-if="rootData!==null">
-        <b-navbar-brand @click="traverse(rootData)" href="#">
+        <b-navbar-brand @click="traverse(rootData)">
             <div class="navbar-brand">
                 <img alt="Logo" id="logo" src="../../assets/logo.png">
                 <h5 class="ml-2" style="display: inline;"></h5>

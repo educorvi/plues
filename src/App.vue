@@ -22,8 +22,19 @@
 </style>
 <script>
     import Topbar from "@/components/Navigation/Topbar";
+    import {mapGetters} from 'vuex';
 
     export default {
-        components: {Topbar}
+        components: {Topbar},
+        computed: {
+            ...mapGetters(["config"])
+        },
+        created() {
+            let link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+            link.type = 'image/x-icon';
+            link.rel = 'shortcut icon';
+            link.href = this.config.faviconURL;
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
     }
 </script>

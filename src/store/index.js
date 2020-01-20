@@ -97,7 +97,7 @@ export default new Vuex.Store({
                     return config;
                 };
                 axios.interceptors.request.use(interceptor);
-                // Vue.http.interceptors.request.use(interceptor)
+                Vue.http.interceptors.request.use(interceptor)
             }
             return state.authToken;
         }
