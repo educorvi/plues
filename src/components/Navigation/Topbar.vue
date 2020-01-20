@@ -106,6 +106,7 @@
                     this.validationState = null;
                     this.$store.commit('setAuthToken', res.data.token);
                     console.log("Erfolg");
+                    location.reload();
                 }).catch(res => {
                     this.validationState = false;
                     console.log("Fehler");
@@ -114,6 +115,7 @@
             logout() {
                 this.$root.$emit('bv::toggle::collapse', 'collapse');
                 this.$store.commit('setAuthToken', null);
+                location.reload();
             }
         },
     }

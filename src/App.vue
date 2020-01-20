@@ -23,6 +23,7 @@
 <script>
     import Topbar from "@/components/Navigation/Topbar";
     import {mapGetters} from 'vuex';
+    import axios from "axios";
 
     export default {
         components: {Topbar},
@@ -30,11 +31,13 @@
             ...mapGetters(["config"])
         },
         created() {
-            let link = document.querySelector("link[rel*='icon']") || document.createElement('link');
-            link.type = 'image/x-icon';
-            link.rel = 'shortcut icon';
-            link.href = this.config.faviconURL;
-            document.getElementsByTagName('head')[0].appendChild(link);
+            axios.get('/config.json').then(res => {
+                let link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+                link.type = 'image/x-icon';
+                link.rel = 'shortcut icon';
+                link.href = res.data.faviconURL;
+                document.getElementsByTagName('head')[0].appendChild(link);
+            });
         }
     }
 </script>

@@ -45,7 +45,6 @@ const plugin = {
             }
             updateComponent({views, path: to.path, vm: Vue, options}).then(next);
           });
-          console.log(this.$options.traverser.options);
           const lpath = this.$options.traverser.options.apiRoot + this.$options.traverser.options.ploneRoot;
           updateComponent({views, path: lpath, vm: Vue, options});
         }
