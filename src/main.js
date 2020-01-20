@@ -53,15 +53,20 @@ axios.get("/config.json").then(res => {
           component: () => import('./components/Traverser/EventItem')
         },
 
-          {
+        {
           type: 'News Item',
           view: 'view',
           component: () => import('./components/Traverser/NewsItem')
         },
-          {
+        {
           type: 'Collection',
           view: 'view',
           component: () => import('./components/Traverser/Collection')
+        },
+        {
+          type: 'Image',
+          view: 'view',
+          component: () => import('./components/Traverser/ImageItem')
         },
       ],
       options: {

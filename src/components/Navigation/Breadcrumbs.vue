@@ -1,5 +1,5 @@
 <template>
-    <ol class="breadcrumb" style="position: sticky" v-if="breadcrumbs.length>0">
+    <ol class="breadcrumb" style="position: sticky" v-if="breadcrumbs.length>0 || breadcrumbs===null">
         <li class="breadcrumb-item" @click="traverse(rootData)"><a href="#">Home</a></li>
         <li v-for="(item) in breadcrumbs.slice(0, breadcrumbs.length-1)" :key="item['@id']" class="breadcrumb-item">
             <traverser-link
@@ -30,7 +30,7 @@
         data() {
             return {
                 //Das Arrays aus Breadcrumbs
-                breadcrumbs: []
+                breadcrumbs: null
             }
         },
         computed: {

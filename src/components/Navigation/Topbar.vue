@@ -3,7 +3,7 @@
         <b-navbar-brand @click="traverse(rootData)">
             <div class="navbar-brand">
                 <img alt="Logo" id="logo" src="../../assets/logo.png">
-                <h5 class="ml-2" style="display: inline;"></h5>
+<!--                <h5 class="ml-2" style="display: inline;"></h5>-->
             </div>
         </b-navbar-brand>
         <b-navbar-toggle target="collapse"/>
@@ -18,12 +18,12 @@
                         </b-nav-item>
                          <b-nav-item-dropdown :text="item.title" class="text-center" right v-else>
                             <b-dropdown-item @click="traverse(item)"
-                                             class="border-bottom border-light cdropdown">
+                                             class="border-bottom border-light">
                                 <b>Alle Elemente in {{item.title}}</b>
                             </b-dropdown-item>
-                             <b-dropdown-item :key="lItem.title" @click="traverse(lItem)" class="cdropdown"
+                             <b-dropdown-item :key="lItem.title" @click="traverse(lItem)"
                                               v-for="lItem in item.items">
-                                {{lItem.title}}
+                                <p class="mb-0"> {{lItem.title}}</p>
                         </b-dropdown-item>
                         </b-nav-item-dropdown>
                     </span>
