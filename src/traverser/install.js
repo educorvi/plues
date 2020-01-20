@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import View from '@/traverser/view';
 import TraverserLink from '@/traverser/traverser-link';
 import {updateComponent, traverse} from '@/traverser/traverser';
@@ -39,10 +40,14 @@ const plugin = {
           this.$router.beforeEach((to, from, next) => {
             if (this.$router.getMatchedComponents(to).length) {
               next();
+              updateComponent({views, path: to.path, vm: Vue, options});
               return;
             }
             updateComponent({views, path: to.path, vm: Vue, options}).then(next);
           });
+          console.log(this.$options.traverser.options);
+          const lpath = this.$options.traverser.options.apiRoot + this.$options.traverser.options.ploneRoot;
+          updateComponent({views, path: lpath, vm: Vue, options});
         }
       },
     });

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import joinPath from 'path.join';
 import parse from 'url-parse';
 
@@ -17,5 +18,6 @@ export function createLink(url, {ploneRoot}) {
 
 export function createTraverserLink(item, {ploneRoot}) {
   const id = item['@id'];
+  console.log(parse(id).pathname.replace(ploneRoot, ''));
   return parse(id).pathname.replace(ploneRoot, '');
 }
