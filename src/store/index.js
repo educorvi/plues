@@ -19,12 +19,12 @@ export default new Vuex.Store({
         },
         setAuthToken(state, token) {
             state.authToken = token;
-            axios.interceptors.request.use(function (config) {
-                console.log("Request with Token");
-                config.headers.Authorization = 'bearer ' + token;
-                console.log(config);
+            const interceptor = function (config) {
+                config.headers.Authorization = 'bearer ' + state.authToken;
                 return config;
-            });
+            };
+            axios.interceptors.request.use(interceptor);
+            Vue.http.interceptors.request.use(interceptor);
             Vue.ls.set("token", token, 60 * 1000 * 60 * 12)
 
         }
@@ -77,7 +77,8 @@ export default new Vuex.Store({
                 if (state.navigation === null) {
                     axios.get(state.config.rootURL + "/@navigation?expand.navigation.depth=2", {
                         headers: {
-                            Accept: "application/json"
+                            Accept: "application/json",
+                            Authorization: 'bearer ' + Vue.ls.get("token", "")
                         }
                     }).then(res => {
                         state.navigation = res.data.items;

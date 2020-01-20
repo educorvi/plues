@@ -45,8 +45,12 @@ const plugin = {
             }
             updateComponent({views, path: to.path, vm: Vue, options}).then(next);
           });
-          const lpath = this.$options.traverser.options.apiRoot + this.$options.traverser.options.ploneRoot;
-          updateComponent({views, path: lpath, vm: Vue, options});
+
+          if (this.$route.fullPath === "/") {
+            const lpath = this.$options.traverser.options.apiRoot + this.$options.traverser.options.ploneRoot;
+            updateComponent({views, path: lpath, vm: Vue, options});
+          }
+
         }
       },
     });

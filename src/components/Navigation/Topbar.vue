@@ -1,5 +1,5 @@
 <template>
-    <b-navbar class="mb-2" id="bar" toggleable="lg" type="light" v-if="rootData!==null">
+    <b-navbar class="mb-2" id="bar" toggleable="true" type="light" v-if="rootData!==null">
         <b-navbar-brand @click="traverse(rootData)">
             <div class="navbar-brand">
                 <img alt="Logo" id="logo" src="../../assets/logo.png">
@@ -11,16 +11,22 @@
         <b-collapse class="mt-n2" id="collapse" is-nav>
             <b-navbar-nav class="ml-auto">
                 <span :key="index" v-for="(item, index) in navigation">
-                    <b-nav-item @click="traverse(item)" class="text-center" v-if="item.items===''">
-                        {{item.title}}
-                     </b-nav-item>
-                    <b-nav-item-dropdown :text="item.title" class="text-center" right v-else>
-                        <b-dropdown-item @click="traverse(item)"
-                                         class="border-bottom border-light"><b>Alle {{item.title}}</b></b-dropdown-item>
-                        <b-dropdown-item :key="lItem.title" @click="traverse(lItem)" v-for="lItem in item.items">
-                            {{lItem.title}}
+
+                    <span v-if="item.title!=='Home'">
+                        <b-nav-item @click="traverse(item)" class="text-center" v-if="item.items===''">
+                            {{item.title}}
+                        </b-nav-item>
+                         <b-nav-item-dropdown :text="item.title" class="text-center" right v-else>
+                            <b-dropdown-item @click="traverse(item)"
+                                             class="border-bottom border-light cdropdown">
+                                <b>Alle Elemente in {{item.title}}</b>
+                            </b-dropdown-item>
+                             <b-dropdown-item :key="lItem.title" @click="traverse(lItem)" class="cdropdown"
+                                              v-for="lItem in item.items">
+                                {{lItem.title}}
                         </b-dropdown-item>
-                    </b-nav-item-dropdown>
+                        </b-nav-item-dropdown>
+                    </span>
                 </span>
 
                 <b-button @click="$root.$emit('bv::toggle::collapse', 'collapse')" v-b-modal.loginModal
@@ -136,13 +142,18 @@
                           coordinates */
         left: 0; /* top left corner should start at leftmost spot */
         top: 0; /* top left corner should start at topmost spot */
-        width: 100vw; /* take up the full browser width */
+        width: 100%; /* take up the full browser width */
         z-index: 200; /* high z index so other content scrolls underneath */
         background: $navbar-custom-color;
     }
 
     #bar > * {
         color: white !important;
+    }
+
+    .cdropdown {
+        max-width: 80%;
+
     }
 
 </style>
