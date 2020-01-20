@@ -10,11 +10,23 @@ export default new Vuex.Store({
         //Werte werden durch Inhalt von config.json überschrieben
         config: null,
         rootData: null,
-        navigation: null
+        navigation: null,
+        authToken: null
     },
     mutations: {
         addNavigationToRootData(state, nav) {
             state.rootData.navigation = nav;
+        },
+        setAuthToken(state, token) {
+            state.authToken = token;
+            axios.interceptors.request.use(function (config) {
+                console.log("Request with Token");
+                config.headers.Authorization = 'bearer ' + token;
+                console.log(config);
+                return config;
+            });
+            Vue.ls.set("token", token, 60 * 1000 * 60 * 12)
+
         }
     },
     actions: {},
@@ -74,8 +86,21 @@ export default new Vuex.Store({
                 }
                 return state.navigation;
 
+            },
+        token: state => {
+            if (state.authToken === null) {
+                state.authToken = Vue.ls.get("token", null);
+                const interceptor = function (config) {
+                    console.log("Request with Token");
+                    config.headers.Authorization = 'bearer ' + state.authToken;
+                    console.log(config);
+                    return config;
+                };
+                axios.interceptors.request.use(interceptor);
+                // Vue.http.interceptors.request.use(interceptor)
             }
+            return state.authToken;
+        }
+    }
 
-    },
-    modules: {}
-})
+});

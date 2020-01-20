@@ -1,18 +1,17 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-  </div>
+  <traverser-view class="container-fluid"/>
 </template>
 
 <script>
+  /* eslint-disable no-unused-vars */
 
-export default {
-  /* eslint-disable no-console */
-  name: 'home',
-  components: {
-  },
-  created() {
-    console.log("Hello World")
-  }
+
+  export default {
+    /* eslint-disable no-console */
+    name: 'home',
+    components: {},
+
+    created() {
+    }
 }
 </script>

@@ -23,21 +23,99 @@
                     </b-nav-item-dropdown>
                 </span>
 
+                <b-button @click="$root.$emit('bv::toggle::collapse', 'collapse')" v-b-modal.loginModal
+                          v-if="token === null">Login
+                </b-button>
+                <b-button @click="logout" v-else>Logout</b-button>
+
+                <b-modal hide-footer id="loginModal" title="Login">
+                    <b-form @submit="login">
+                        <b-form-invalid-feedback :state="validationState">
+                            <h5>Benutzername/Passwort falsch!</h5>
+                        </b-form-invalid-feedback>
+                        <b-form-group
+                                id="input-group-1"
+                                label="Benutzername:"
+                                label-for="input-1"
+                        >
+                            <b-form-input
+                                    :state="validationState"
+                                    id="input-1"
+                                    placeholder="Benutzernamen eingeben"
+                                    required
+                                    v-model="form.user"
+                            />
+                        </b-form-group>
+
+                        <b-form-group id="input-group-2" label="Ihr Passwort" label-for="input-2">
+                            <b-form-input
+                                    :state="validationState"
+                                    id="input-2"
+                                    placeholder="Passwort eingeben"
+                                    required
+                                    type="password"
+                                    v-model="form.pass"
+                            />
+                        </b-form-group>
+                        <b-button @click="$bvModal.hide('loginModal')" class="left" variant="danger">Abbrechen
+                        </b-button>
+                        <b-button class="float-right" type="submit" variant="primary">Einloggen</b-button>
+                    </b-form>
+                </b-modal>
+
             </b-navbar-nav>
         </b-collapse>
     </b-navbar>
 </template>
 
 <script>
-    import {mapGetters} from 'vuex';
+    /* eslint-disable no-console */
+    /* eslint-disable no-unused-vars */
+    import {mapGetters, mapMutations} from 'vuex';
+    import axios from 'axios';
     // @vuese
     // Navigation Bar für die App, deren NavItems sich dynamisch an Plone anpassen
     // @group Navigation
     export default {
         name: "Topbar",
+        data() {
+            return {
+                form: {
+                    user: '',
+                    pass: ''
+                },
+                validationState: null,
+                wait: false
+            }
+        },
         computed: {
-            ...mapGetters(["rootData", "navigation"])
-        }
+            ...mapGetters(["rootData", "config", "navigation", "token"])
+        },
+        methods: {
+            login(evt) {
+                evt.preventDefault();
+                axios.post(this.config.rootURL + "@login", {
+                    login: this.form.user,
+                    password: this.form.pass
+                }, {
+                    headers: {
+                        Accept: "application/json"
+                    }
+                }).then(res => {
+                    this.$bvModal.hide('loginModal');
+                    this.validationState = null;
+                    this.$store.commit('setAuthToken', res.data.token);
+                    console.log("Erfolg");
+                }).catch(res => {
+                    this.validationState = false;
+                    console.log("Fehler");
+                });
+            },
+            logout() {
+                this.$root.$emit('bv::toggle::collapse', 'collapse');
+                this.$store.commit('setAuthToken', null);
+            }
+        },
     }
 </script>
 

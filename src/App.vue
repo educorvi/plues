@@ -3,12 +3,6 @@
     <div id="app">
         <div >
             <Topbar/>
-
-            <!--    <div id="nav">-->
-            <!--      <router-link to="/">Home</router-link> |-->
-            <!--      <router-link to="/about">About</router-link>-->
-            <!--    </div>-->
-            <!--    <router-view/>-->
             <traverser-view class="container-fluid"/>
         </div>
     </div>
