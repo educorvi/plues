@@ -37,6 +37,7 @@ const interceptor = function (config) {
     params.append("metadata_fields", "creators");
     params.append("metadata_fields", "start");
     config.params = params;
+    config.headers.Accept = "application/json";
     return config;
 };
 Vue.http.interceptors.request.use(interceptor);

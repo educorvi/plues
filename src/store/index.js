@@ -11,7 +11,8 @@ export default new Vuex.Store({
         config: null,
         rootData: null,
         navigation: null,
-        authToken: null
+        authToken: null,
+        users: null
     },
     mutations: {
         addNavigationToRootData(state, nav) {
@@ -25,7 +26,7 @@ export default new Vuex.Store({
             };
             axios.interceptors.request.use(interceptor);
             Vue.http.interceptors.request.use(interceptor);
-            Vue.ls.set("token", token, 60 * 1000 * 60 * 12)
+            Vue.ls.set("token", token, 60 * 1000 * 60 * 12);
 
         }
     },
