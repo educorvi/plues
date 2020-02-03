@@ -6,9 +6,7 @@
                     :item="item">{{item.title}}
             </traverser-link>
         </li>
-        <li class="breadcrumb-item active">
-            {{breadcrumbs[breadcrumbs.length-1].title}}
-        </li>
+        <li class="breadcrumb-item active">{{breadcrumbs[breadcrumbs.length-1].title}}</li>
 
     </ol>
 </template>
@@ -22,29 +20,40 @@
         name: "Breadcrumbs",
         props: {
             //Die RestApiUrl zu den @breadcrumbs (z. B. https://www.beispielwebsite.com/ploneroot/@breadcrumbs)
-            breadcrumbsURL: {
-                type: String,
-                required: true
-            }
+            // breadcrumbsURL: {
+            //     type: String,
+            //     required: true
+            // }
         },
         data() {
             return {
                 //Das Arrays aus Breadcrumbs
-                breadcrumbs: null
+                breadcrumbs: null,
+                //    Die URL zu den Breadcrumbs, entwickelt aus der Route
+                breadcrumbsURL: []
             }
         },
         computed: {
-            ...mapGetters(["rootData"])
+            ...mapGetters(["rootData", "config"])
         },
         methods: {},
         mounted() {
-            axios.get(this.breadcrumbsURL, {
-                headers: {
-                    Accept: "application/json"
-                }
-            }).then(res => {
-                this.breadcrumbs = res.data.items;
-            });
+            this.breadcrumbsURL = this.config.rootURL + this.$route.path + "/@breadcrumbs";
+        },
+        watch: {
+            breadcrumbsURL: function () {
+                axios.get(this.breadcrumbsURL, {
+                    headers: {
+                        Accept: "application/json"
+                    }
+                }).then(res => {
+                    this.breadcrumbs = res.data.items;
+                });
+
+            },
+            "$route.path": function () {
+                this.breadcrumbsURL = this.config.rootURL + this.$route.path + "/@breadcrumbs";
+            }
         }
     }
 </script>

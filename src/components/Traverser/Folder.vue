@@ -1,29 +1,24 @@
 <template>
     <section id="folder">
         <div v-if="stay">
-            <Breadcrumbs :breadcrumbs-u-r-l="context['@components']['breadcrumbs']['@id']"/>
-            <h1>Folder: {{context.title}}</h1>
-            <ul>
-                <li :key="item['@id']" v-for="item in context.items">
-                    <traverser-link :class="item.title" :item="item">{{item.title}}</traverser-link>
-                </li>
-            </ul>
+            <h1>{{context.title}}</h1>
+            <p>{{context.description}}</p>
+            <enhanced_folderlist :items="context.items"/>
         </div>
         <CustomSpinner v-else/>
-        <Batcher :item="context" v-if="context.batching!==null"/>
+        <!--        <Batcher :item="context" v-if="context.batching!==null"/>-->
     </section>
 </template>
 
 <script>
     import {basecomponent} from 'plone-vue';
-    import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
     import CustomSpinner from "@/components/Helper/CustomSpinner";
-    import Batcher from "@/components/Helper/Batcher";
+    import enhanced_folderlist from "@/components/Helper/Folder/enhanced_folderlist";
 
     // @group TraverserViews
     //Component um Plone Folders darzustellen
     export default {
-        components: {Batcher, CustomSpinner, Breadcrumbs},
+        components: {enhanced_folderlist, CustomSpinner},
         mixins: [basecomponent],
         name: "Folder",
         data() {

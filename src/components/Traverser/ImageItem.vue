@@ -1,6 +1,5 @@
 <template>
     <div>
-        <breadcrumbs :breadcrumbs-u-r-l="context['@components']['breadcrumbs']['@id']"/>
         <h1>{{context.title}}</h1>
         <b-row>
             <b-col v-if="context.description">
@@ -17,11 +16,10 @@
 <script>
     import basecomponent from "@/traverser/basecomponent";
     import CustomSpinner from "@/components/Helper/CustomSpinner";
-    import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
 
     export default {
         name: "ImageItem",
-        components: {Breadcrumbs, CustomSpinner},
+        components: {CustomSpinner},
         mixins: [basecomponent],
         data() {
             return {

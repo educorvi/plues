@@ -1,6 +1,5 @@
 <template>
     <section id="collection">
-        <Breadcrumbs :breadcrumbs-u-r-l="context['@components']['breadcrumbs']['@id']"/>
         <div class="ml-lg-4 mr-lg-4" v-if="data!=null">
             <h2>{{data.title}}</h2>
             <div class="container-fluid">
@@ -17,7 +16,6 @@
     /* eslint-disable no-console */
 
     import {basecomponent} from 'plone-vue';
-    import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
     import CollectionCard from "@/components/Helper/Collection/CollectionCard";
     import axios from "axios"
     import CustomSpinner from "@/components/Helper/CustomSpinner";
@@ -25,7 +23,7 @@
     // @group TraverserViews
     // Component um Plone Collections darzustellen
     export default {
-        components: {CustomSpinner, CollectionCard, Breadcrumbs},
+        components: {CustomSpinner, CollectionCard},
         mixins: [basecomponent],
         name: "Collection",
         data() {

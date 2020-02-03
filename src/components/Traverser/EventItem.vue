@@ -1,6 +1,5 @@
 <template>
     <section id="event">
-        <Breadcrumbs :breadcrumbs-u-r-l="context['@components']['breadcrumbs']['@id']"/>
         <div class="w-100 mb-4" style="text-align: center">
             <h2>{{context.title}}</h2>
             <h6>{{context.description}}</h6>
@@ -48,7 +47,6 @@
 
 <script>
     import {basecomponent} from 'plone-vue';
-    import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
     import TimeDurationDisplay from "@/components/Helper/EventItem/TimeDurationDisplay";
     import Subcard from "@/components/Helper/EventItem/Subcard";
     import EditedLine from "@/components/Helper/EditedLine";
@@ -57,7 +55,7 @@
     // @group TraverserViews
     //Component um Plone EventItems darzustellen
     export default {
-        components: {EditedLine, Subcard, TimeDurationDisplay, Breadcrumbs},
+        components: {EditedLine, Subcard, TimeDurationDisplay},
         mixins: [basecomponent],
         name: "EventItem",
         computed: {

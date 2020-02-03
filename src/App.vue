@@ -1,9 +1,13 @@
 <!--suppress CssUnusedSymbol -->
 <template>
     <div id="app">
-        <div >
+        <div>
             <Topbar/>
-            <traverser-view class="container-fluid"/>
+            <div class="container-fluid">
+                <Breadcrumbs/>
+                <traverser-view/>
+            </div>
+
         </div>
     </div>
 </template>
@@ -29,9 +33,10 @@
     import Topbar from "@/components/Navigation/Topbar";
     import {mapGetters} from 'vuex';
     import axios from "axios";
+    import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
 
     export default {
-        components: {Topbar},
+        components: {Breadcrumbs, Topbar},
         computed: {
             ...mapGetters(["config"])
         },
