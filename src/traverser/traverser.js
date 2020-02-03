@@ -36,6 +36,7 @@ export function lookup({views, path, options}) {
 
 export function updateComponent({views, path, vm, options}) {
   return lookup({views, path, options}).then(({component, context}) => {
+    window.scrollTo(0, 0);
     executeHook(
         component.onTraverse,
         null,
