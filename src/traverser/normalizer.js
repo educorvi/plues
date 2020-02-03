@@ -18,6 +18,5 @@ export function createLink(url, {ploneRoot}) {
 
 export function createTraverserLink(item, {ploneRoot}) {
   const id = item['@id'];
-  console.log(parse(id).pathname.replace(ploneRoot, ''));
   return parse(id).pathname.replace(ploneRoot, '');
 }

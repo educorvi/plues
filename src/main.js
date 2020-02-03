@@ -11,8 +11,6 @@ import Storage from "vue-ls";
 
 Vue.config.productionTip = false;
 
-Vue.use(Traverser);
-Vue.use(BootstrapVue);
 
 const options = {
   namespace: 'pluesjs__', // key prefix
@@ -21,6 +19,19 @@ const options = {
 };
 
 Vue.use(Storage, options);
+
+
+Vue.use(Traverser);
+const token = Vue.ls.get("token", null);
+if (token !== null) {
+  const interceptor = function (config) {
+    config.headers.Authorization = 'bearer ' + token;
+    return config;
+  };
+  Vue.http.interceptors.request.use(interceptor)
+}
+Vue.use(BootstrapVue);
+
 
 let config = {};
 

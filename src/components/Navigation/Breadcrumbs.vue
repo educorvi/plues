@@ -14,6 +14,14 @@
 <script>
     import axios from "axios";
     import {mapGetters} from "vuex";
+
+    function load() {
+        if (this.config !== undefined) {
+            this.breadcrumbsURL = this.config["rootURL"] + this.$route.path + "/@breadcrumbs";
+        }
+    }
+
+
     //Component, der die sogenannten Breadcrumbs realisiert
     // @group Navigation
     export default {
@@ -28,18 +36,15 @@
         data() {
             return {
                 //Das Arrays aus Breadcrumbs
-                breadcrumbs: null,
+                breadcrumbs: [],
                 //    Die URL zu den Breadcrumbs, entwickelt aus der Route
-                breadcrumbsURL: []
+                breadcrumbsURL: ""
             }
         },
         computed: {
             ...mapGetters(["rootData", "config"])
         },
         methods: {},
-        mounted() {
-            this.breadcrumbsURL = this.config.rootURL + this.$route.path + "/@breadcrumbs";
-        },
         watch: {
             breadcrumbsURL: function () {
                 axios.get(this.breadcrumbsURL, {
@@ -52,7 +57,10 @@
 
             },
             "$route.path": function () {
-                this.breadcrumbsURL = this.config.rootURL + this.$route.path + "/@breadcrumbs";
+                load.call(this);
+            },
+            config: function () {
+                load.call(this);
             }
         }
     }
