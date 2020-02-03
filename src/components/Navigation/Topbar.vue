@@ -7,7 +7,18 @@
             </div>
         </b-navbar-brand>
 
-        <b-navbar-toggle target="collapse"/>
+        <b-nav-form>
+            <span class="mr-3">
+                <b-button
+                        v-b-modal.loginModal
+                        v-if="token === null">Login</b-button>
+                <b-button @click="logout" v-else>Logout</b-button>
+            </span>
+
+            <b-navbar-toggle target="collapse"/>
+        </b-nav-form>
+
+
         <b-collapse class="mt-n2" id="collapse" is-nav>
             <b-navbar-nav class="ml-auto">
                 <span :key="index" v-for="(item, index) in navigation">
@@ -29,11 +40,6 @@
                     </span>
                 </span>
 
-                <b-button @click="$root.$emit('bv::toggle::collapse', 'collapse')" v-b-modal.loginModal
-                          v-if="token === null">
-                    Login
-                </b-button>
-                <b-button @click="logout" v-else>Logout</b-button>
 
                 <b-modal hide-footer id="loginModal" title="Login">
                     <b-form @submit="login">
@@ -120,7 +126,6 @@
                 });
             },
             logout() {
-                this.$root.$emit('bv::toggle::collapse', 'collapse');
                 this.$store.commit('setAuthToken', null);
                 location.reload();
             }

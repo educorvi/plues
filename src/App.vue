@@ -1,14 +1,17 @@
 <!--suppress CssUnusedSymbol -->
 <template>
     <div id="app">
-        <div>
-            <Topbar/>
-            <div class="container-fluid">
-                <Breadcrumbs/>
-                <traverser-view/>
-            </div>
 
+        <Topbar/>
+        <div class="container-fluid" v-if="$route.path!=='/error'">
+            <Breadcrumbs/>
+            <traverser-view/>
         </div>
+        <div class="container-fluid" v-else>
+            <error/>
+        </div>
+
+
     </div>
 </template>
 
@@ -33,10 +36,11 @@
     import Topbar from "@/components/Navigation/Topbar";
     import {mapGetters} from 'vuex';
     import axios from "axios";
+    import Error from "@/views/Error";
     import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
 
     export default {
-        components: {Breadcrumbs, Topbar},
+        components: {Breadcrumbs, Error, Topbar},
         computed: {
             ...mapGetters(["config"])
         },

@@ -3,5 +3,6 @@ import CustomSpinner from "@/components/Helper/CustomSpinner";
 
 export default {
     name: 'traverser-component',
+    components: {CustomSpinner},
     template: '<custom-spinner></custom-spinner>',
 };

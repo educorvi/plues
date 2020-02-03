@@ -1,17 +1,23 @@
 <template>
-  <traverser-view class="container-fluid"/>
+    <div>
+        <Breadcrumbs/>
+        <traverser-view/>
+    </div>
 </template>
 
 <script>
-  /* eslint-disable no-unused-vars */
+    /* eslint-disable no-unused-vars */
 
 
-  export default {
-    /* eslint-disable no-console */
-    name: 'home',
-    components: {},
+    import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
 
-    created() {
+    export default {
+        /* eslint-disable no-console */
+        name: 'home',
+        components: {Breadcrumbs},
+
+        mounted() {
+            this.traverse({"@id": this.$route.path + "?rel"})
+        }
     }
-}
 </script>
