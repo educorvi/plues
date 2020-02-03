@@ -3,11 +3,11 @@
         <b-navbar-brand @click="traverse(rootData)">
             <div class="navbar-brand">
                 <img alt="Logo" id="logo" src="../../assets/logo.png">
-<!--                <h5 class="ml-2" style="display: inline;"></h5>-->
+                <!--                <h5 class="ml-2" style="display: inline;"></h5>-->
             </div>
         </b-navbar-brand>
-        <b-navbar-toggle target="collapse"/>
 
+        <b-navbar-toggle target="collapse"/>
         <b-collapse class="mt-n2" id="collapse" is-nav>
             <b-navbar-nav class="ml-auto">
                 <span :key="index" v-for="(item, index) in navigation">
@@ -30,7 +30,8 @@
                 </span>
 
                 <b-button @click="$root.$emit('bv::toggle::collapse', 'collapse')" v-b-modal.loginModal
-                          v-if="token === null">Login
+                          v-if="token === null">
+                    Login
                 </b-button>
                 <b-button @click="logout" v-else>Logout</b-button>
 
