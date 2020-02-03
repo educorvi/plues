@@ -3,7 +3,7 @@
         <div v-if="stay">
             <h1>{{context.title}}</h1>
             <p>{{context.description}}</p>
-            <enhanced_folderlist :items="context.items"/>
+            <listing_view :items="context.items"/>
         </div>
         <CustomSpinner v-else/>
         <!--        <Batcher :item="context" v-if="context.batching!==null"/>-->
@@ -13,12 +13,13 @@
 <script>
     import {basecomponent} from 'plone-vue';
     import CustomSpinner from "@/components/Helper/CustomSpinner";
-    import enhanced_folderlist from "@/components/Helper/Folder/enhanced_folderlist";
+    // import enhanced_folderlist from "@/components/Helper/Folder/enhanced_folderlist";
+    import listing_view from "@/components/Helper/Folder/listing_view";
 
     // @group TraverserViews
     //Component um Plone Folders darzustellen
     export default {
-        components: {enhanced_folderlist, CustomSpinner},
+        components: {listing_view, CustomSpinner},
         mixins: [basecomponent],
         name: "Folder",
         data() {

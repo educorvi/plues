@@ -30,6 +30,18 @@ if (token !== null) {
     };
     Vue.http.interceptors.request.use(interceptor)
 }
+
+const interceptor = function (config) {
+    let params = new URLSearchParams();
+    params.append("metadata_fields", "modified");
+    params.append("metadata_fields", "creators");
+    params.append("metadata_fields", "start");
+    config.params = params;
+    return config;
+};
+Vue.http.interceptors.request.use(interceptor);
+
+
 Vue.http.interceptors.response.use((response) => { // intercept the global error
     return response;
 }, function () {

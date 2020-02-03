@@ -2,9 +2,9 @@
 <template>
     <div id="app">
 
-        <Topbar/>
+        <Topbar v-if="!$route.query.nonav"/>
         <div class="container-fluid" v-if="$route.path!=='/error'">
-            <Breadcrumbs/>
+            <Breadcrumbs v-if="!$route.query.nonav"/>
             <traverser-view/>
         </div>
         <div class="container-fluid" v-else>
