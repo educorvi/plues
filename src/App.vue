@@ -3,7 +3,7 @@
     <div id="app">
 
         <Topbar v-if="!$route.query.nonav"/>
-        <div class="container-fluid" v-if="$route.path!=='/error'">
+        <div class="container-fluid fluidsized" v-if="$route.path!=='/error'">
             <Breadcrumbs v-if="!$route.query.nonav"/>
             <traverser-view/>
         </div>
@@ -15,7 +15,9 @@
     </div>
 </template>
 
-<style>
+<style lang="scss">
+    @import "style";
+
     .ccard {
         cursor: pointer;
         transition: background-color .3s cubic-bezier(.4, 0, .2, 1), box-shadow .4s cubic-bezier(.25, .8, .25, 1);
@@ -31,6 +33,14 @@
         max-width: 100%;
         height: auto;
     }
+
+    @media (min-width: 992px) {
+        .fluidsized {
+            max-width: 80%;
+        }
+
+    }
+
 </style>
 <script>
     import Topbar from "@/components/Navigation/Topbar";
