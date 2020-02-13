@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* eslint-disable no-console,no-unused-vars */
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -19,7 +19,6 @@ const options = {
 };
 
 Vue.use(Storage, options);
-
 
 Vue.use(Traverser);
 const token = Vue.ls.get("token", null);
@@ -45,8 +44,12 @@ Vue.http.interceptors.request.use(interceptor);
 
 Vue.http.interceptors.response.use((response) => { // intercept the global error
     return response;
-}, function () {
-    router.push("/error");
+}, function (error) {
+    console.log(JSON.stringify(error));
+    if (router.currentRoute.name === "home") {
+        router.push("/errors/default");
+    }
+
 });
 Vue.use(BootstrapVue);
 

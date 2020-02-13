@@ -1,12 +1,11 @@
 <template>
     <div>
-        <Breadcrumbs/>
+        <Breadcrumbs v-if="!$route.query.nonav"/>
         <traverser-view/>
     </div>
 </template>
 
 <script>
-    /* eslint-disable no-unused-vars */
 
 
     import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
@@ -17,7 +16,7 @@
         components: {Breadcrumbs},
 
         mounted() {
-            this.traverse({"@id": this.$route.path + "?rel"})
+            this.traverse({"@id": this.$route.path + "?rel"});
         }
     }
 </script>

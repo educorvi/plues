@@ -1,6 +1,7 @@
 import resolve from '@/traverser/resolver';
 import {createTraverserLink} from '@/traverser/normalizer';
 import executeHook from '@/traverser/traverseHook';
+import router from "@/router";
 
 
 export function lookup({views, path, options}) {
@@ -9,6 +10,7 @@ export function lookup({views, path, options}) {
     const componentsByType = views.filter(v => v.type === type);
 
     if (!componentsByType.length) {
+      router.push('/errors/contenttyp/' + type);
       throw new Error(`Component for type "${type}" could not be found`);
     }
 

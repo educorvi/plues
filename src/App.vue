@@ -3,13 +3,8 @@
     <div id="app">
 
         <Topbar v-if="!$route.query.nonav"/>
-        <div class="container-fluid fluidsized" v-if="$route.path!=='/error'">
-            <Breadcrumbs v-if="!$route.query.nonav"/>
-            <traverser-view/>
-        </div>
-        <div class="container-fluid" v-else>
-            <error/>
-        </div>
+        <router-view class="container-fluid fluidsized">
+        </router-view>
 
 
     </div>
@@ -46,10 +41,11 @@
     import Topbar from "@/components/Navigation/Topbar";
     import {mapGetters} from 'vuex';
     import axios from "axios";
-    import Error from "@/views/Error";
+    import Error from "@/views/Errors/General_Error";
     import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
 
     export default {
+        // eslint-disable-next-line vue/no-unused-components
         components: {Breadcrumbs, Error, Topbar},
         computed: {
             ...mapGetters(["config"])
