@@ -1,5 +1,7 @@
 # EditedLine
 
+Dieser Component gibt Information darüber, wann das Dokument zum letzten mal von wem bearbeitet wurde
+
 ## Props
 
 <!-- @vuese:EditedLine:props:start -->
@@ -9,15 +11,5 @@
 |nofloat|Gibt an, dass die Line nicht in der unteren rechten Ecke floaten soll|`Boolean`|`false`|-|
 
 <!-- @vuese:EditedLine:props:end -->
-
-
-## Computed
-
-<!-- @vuese:EditedLine:computed:start -->
-|Computed|Type|Description|From Store|
-|---|---|---|---|
-|getCreatorsString|-|Gibt einen String, der durch Komma getrennt die Ersteller des Objekts enthält|No|
-
-<!-- @vuese:EditedLine:computed:end -->
 
 
