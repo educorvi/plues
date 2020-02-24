@@ -1,6 +1,9 @@
 <template>
     <ol class="breadcrumb" style="position: sticky" v-if="breadcrumbs.length>0 || breadcrumbs===null">
-        <li class="breadcrumb-item" @click="traverse(rootData)"><a href="#">Home</a></li>
+        <li @click="traverse(rootData)" class="breadcrumb-item"><a>
+            <b-icon-house-fill font-scale="1.5" variant="primary"/>
+        </a></li>
+        <!--        <li class="breadcrumb-item" @click="traverse(rootData)"><a href="#">Home</a></li>-->
         <li v-for="(item) in breadcrumbs.slice(0, breadcrumbs.length-1)" :key="item['@id']" class="breadcrumb-item">
             <traverser-link
                     :item="item">{{item.title}}
@@ -14,6 +17,7 @@
 <script>
     import axios from "axios";
     import {mapGetters} from "vuex";
+    import {BIconHouseFill} from "bootstrap-vue";
 
     function load() {
         if (this.config !== undefined) {
@@ -32,6 +36,9 @@
             //     type: String,
             //     required: true
             // }
+        },
+        components: {
+            BIconHouseFill
         },
         data() {
             return {
