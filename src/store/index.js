@@ -39,7 +39,7 @@ export default new Vuex.Store({
                 } else {
                     axios.get('/config.json').then(res => {
                         state.config = res.data;
-                        state.config.rootURL = state.config.apiRoot + state.config.ploneRoot;
+                        state.config.rootURL = state.config.apiRoot + (state.config.ploneRoot !== undefined && state.config.ploneRoot !== null) ? state.config.ploneRoot : "";
                         return state.config;
                     })
                 }

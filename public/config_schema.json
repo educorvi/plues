@@ -1,0 +1,29 @@
+{
+  "$id": "https://plues.jp-studio.de/config_schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Config",
+  "description": "Schema für die Config Datei von Plues",
+  "type": "object",
+  "properties": {
+    "apiRoot": {
+      "description": "Die URL zur Website. (bei z.B. https://jp-studios.de/plone wäre apiRoot https://jp-studios.de/)",
+      "type": "string"
+    },
+    "ploneRoot": {
+      "description": "Falls die Plone Instanz nicht im Root läuft, kann hier der Name der Instanz angegeben werden. (bei z.B. https://jp-studios.de/plone wäre ploneRoot \"plone\"",
+      "type": "string",
+      "default": ""
+    },
+    "mapsApiKey": {
+      "description": "API Key für die Google Maps Implementation in der TerminView",
+      "type": "string"
+    },
+    "faviconURL": {
+      "description": "URL zum Favicon, das angezeigt werden soll",
+      "type": "string"
+    }
+  },
+  "required": [
+    "apiRoot"
+  ]
+}
