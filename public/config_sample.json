@@ -1,5 +1,5 @@
 {
-  "$schema": "https://plues.jp-studio.de/config_schema.json",
+  "$schema": "https://plues.jp-studios.de/config_schema.json",
   "apiRoot": "http://localhost:8080/",
   "ploneRoot": "plone",
   "mapsApiKey": "googleMapsAPIKey",

@@ -1,5 +1,5 @@
 {
-  "$id": "https://plues.jp-studio.de/config_schema.json",
+  "$id": "https://plues.jp-studios.de/config_schema.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Config",
   "description": "Schema für die Config Datei von Plues",
