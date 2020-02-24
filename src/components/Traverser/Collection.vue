@@ -15,7 +15,7 @@
 <script>
     /* eslint-disable no-console */
 
-    import {basecomponent} from 'plone-vue';
+    import basecomponent from "@/traverser/basecomponent";
     import CollectionCard from "@/components/Helper/Collection/CollectionCard";
     import axios from "axios"
     import CustomSpinner from "@/components/Helper/CustomSpinner";

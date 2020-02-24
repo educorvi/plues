@@ -57,5 +57,8 @@ export function updateComponent({views, path, vm, options}) {
 }
 
 export function traverse(item, router, options) {
-  return router.push(createTraverserLink(item, options));
+  const link = createTraverserLink(item, options);
+  if (link !== router.app.$route.path) {
+    return router.push(link);
+  }
 }

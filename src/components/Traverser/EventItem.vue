@@ -46,7 +46,7 @@
 </template>
 
 <script>
-    import {basecomponent} from 'plone-vue';
+    import basecomponent from "@/traverser/basecomponent";
     import TimeDurationDisplay from "@/components/Helper/EventItem/TimeDurationDisplay";
     import Subcard from "@/components/Helper/EventItem/Subcard";
     import EditedLine from "@/components/Helper/EditedLine";

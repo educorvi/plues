@@ -45,6 +45,9 @@
             ...mapGetters(["rootData", "config"])
         },
         methods: {},
+        mounted() {
+            load.call(this);
+        },
         watch: {
             breadcrumbsURL: function () {
                 axios.get(this.breadcrumbsURL, {

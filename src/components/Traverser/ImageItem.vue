@@ -47,7 +47,7 @@
 
         },
 
-        created() {
+        mounted() {
             this.loadImage();
         }
     }

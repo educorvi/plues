@@ -1,6 +1,6 @@
 <template>
     <p :class="getClass">Zuletzt verändert am {{new Date(context.modified).toLocaleString()}}<span
-            v-if="lineString!=='' && lineString">, erstellt von {{lineString}}</span></p>
+            v-if="lineString!=='' && lineString !== 'null'">, erstellt von {{lineString}}</span></p>
 </template>
 <script>
     import {mapGetters} from "vuex";

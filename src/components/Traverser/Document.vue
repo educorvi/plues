@@ -9,7 +9,7 @@
 <script>
     /* eslint-disable no-console */
 
-    import {basecomponent} from 'plone-vue';
+    import basecomponent from "@/traverser/basecomponent";
     import EditedLine from "@/components/Helper/EditedLine";
     // @group TraverserViews
     //Component um Plone Documents darzustellen

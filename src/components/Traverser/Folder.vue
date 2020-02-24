@@ -12,7 +12,7 @@
 </template>
 
 <script>
-    import {basecomponent} from 'plone-vue';
+    import basecomponent from "@/traverser/basecomponent";
     import CustomSpinner from "@/components/Helper/CustomSpinner";
     // import enhanced_folderlist from "@/components/Helper/Folder/enhanced_folderlist";
     import tabular_view from "@/components/Helper/Folder/tabular_view";
@@ -30,7 +30,7 @@
                 stay: false
             }
         },
-        created() {
+        mounted() {
             if (this.context.items.length > 0 && this.context.items[0]["@type"] === "Collection") {
                 this.traverse(this.context.items[0]);
             } else {

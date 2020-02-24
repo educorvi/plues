@@ -8,7 +8,7 @@
 </template>
 
 <script>
-    import {basecomponent} from 'plone-vue';
+    import basecomponent from "@/traverser/basecomponent";
     import EditedLine from "@/components/Helper/EditedLine";
 
     // @group TraverserViews
