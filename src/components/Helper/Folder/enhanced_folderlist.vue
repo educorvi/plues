@@ -12,9 +12,12 @@
 </template>
 
 <script>
+    // Folder Ansicht, die Plones Enhanced Folderlist entspricht
+    // @group Helper/Folder
     export default {
         name: "enhanced_folderlist",
         props: {
+            // Die Items die in diesem Ordner angezeigt werden sollen; entspricht dem Array Items in der RestAPI
             items: {
                 type: Array,
                 required: true

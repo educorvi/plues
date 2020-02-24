@@ -15,10 +15,13 @@
 <script>
     import EditedLine from "@/components/Helper/EditedLine";
 
+    // Folder Ansicht, die Plones listing view entspricht
+    // @group Helper/Folder
     export default {
-        name: "enhanced_folderlist",
+        name: "listing_view",
         components: {EditedLine},
         props: {
+            // Die Items die in diesem Ordner angezeigt werden sollen; entspricht dem Array Items in der RestAPI
             items: {
                 type: Array,
                 required: true

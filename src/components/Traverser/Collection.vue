@@ -28,7 +28,7 @@
         name: "Collection",
         data() {
             return {
-                //Im Grunde dieselben Daten wie in Context, nur mit zusätlichen Feldern
+                //Im Grunde die selben Daten wie in Context, nur mit zusätlichen Feldern
                 data: null
             }
         },

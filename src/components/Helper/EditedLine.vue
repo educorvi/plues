@@ -1,10 +1,11 @@
 <template>
     <p :class="getClass">Zuletzt verändert am {{new Date(context.modified).toLocaleString()}}<span
-            v-if="lineString!==''">, erstellt von {{lineString}}</span></p>
+            v-if="lineString!=='' && lineString">, erstellt von {{lineString}}</span></p>
 </template>
 <script>
     import {mapGetters} from "vuex";
     import axios from "axios";
+    //Dieser Component gibt Information darüber, wann das Dokument zum letzten mal von wem bearbeitet wurde
     //@group Helper
     export default {
         name: 'EditedLine',
