@@ -3,7 +3,6 @@
         <li @click="traverse(rootData)" class="breadcrumb-item"><a>
             <b-icon-house-fill font-scale="1.5" variant="primary"/>
         </a></li>
-        <!--        <li class="breadcrumb-item" @click="traverse(rootData)"><a href="#">Home</a></li>-->
         <li v-for="(item) in breadcrumbs.slice(0, breadcrumbs.length-1)" :key="item['@id']" class="breadcrumb-item">
             <traverser-link
                     :item="item">{{item.title}}
@@ -30,13 +29,6 @@
     // @group Navigation
     export default {
         name: "Breadcrumbs",
-        props: {
-            //Die RestApiUrl zu den @breadcrumbs (z. B. https://www.beispielwebsite.com/ploneroot/@breadcrumbs)
-            // breadcrumbsURL: {
-            //     type: String,
-            //     required: true
-            // }
-        },
         components: {
             BIconHouseFill
         },

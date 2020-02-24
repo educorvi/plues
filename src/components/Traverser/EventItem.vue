@@ -16,7 +16,8 @@
                             <TimeDurationDisplay :end="new Date(context.end)" :open-end="context.open_end"
                                                  :start="new Date(context.start)" :whole-day="context.whole_day"/>
                         </Subcard>
-                        <Subcard responsiv title="Wo" v-if="context.location != null" visible>
+                        <Subcard responsiv title="Wo"
+                                 v-if="config.mapsApiKey && config.mapsApiKey!=='' && context.location != null" visible>
                             <iframe :src="'https://www.google.com/maps/embed/v1/place?q='+context.location+'w&key='+config.mapsApiKey+'&zoom=12'"
                                     class="mb-n2"
                                     height="100%"
