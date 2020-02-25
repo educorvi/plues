@@ -2,9 +2,9 @@
     <div ref="parentSidebar">
         <Breadcrumbs v-if="!$route.query.nonav"/>
             <b-icon-gear @click="$refs.sidebar.active = true" class="sidebarOpener" font-scale="2.4"
-                         v-if="config.sideBar"/>
+                         v-if="config.sideBar && token !== null"/>
         <traverser-view/>
-        <Sidebar ref="sidebar" v-if="config.sideBar"/>
+        <Sidebar ref="sidebar" v-if="config.sideBar && token !== null"/>
     </div>
 </template>
 
