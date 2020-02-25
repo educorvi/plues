@@ -37,13 +37,17 @@
         @extend .rounded;
         background-color: $primary;
         float: left;
-        position: sticky;
-        position: -webkit-sticky;
-        top: 80px;
-        left: 10px;
         @media (min-width: 992px) {
-            margin-left: -8%;
-            margin-top: -5%;
+            position: fixed;
+            top: 80px;
+            left: 8px;
+
+        }
+        @media (max-width: 991px) {
+            position: sticky;
+            position: -webkit-sticky;
+            top: 80px;
+            left: 10px;
         }
         color: $navbar-light-color;
         z-index: 1000;
