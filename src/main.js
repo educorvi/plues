@@ -8,6 +8,10 @@ import BootstrapVue from "bootstrap-vue";
 import './style.scss';
 import axios from 'axios';
 import Storage from "vue-ls";
+import Vuesax from 'vuesax'
+import 'vuesax/dist/vuesax.css'
+import 'material-icons/iconfont/material-icons.css';
+
 
 Vue.config.productionTip = false;
 
@@ -51,7 +55,11 @@ Vue.http.interceptors.response.use((response) => { // intercept the global error
     }
 
 });
+
+
 Vue.use(BootstrapVue);
+
+Vue.use(Vuesax);
 
 
 let config = {};

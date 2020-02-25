@@ -3,5 +3,6 @@
   "apiRoot": "http://localhost:8080/",
   "ploneRoot": "plone",
   "mapsApiKey": "googleMapsAPIKey",
-  "faviconURL": "https://www.beispielurl.com/favicon.ico"
+  "faviconURL": "https://www.beispielurl.com/favicon.ico",
+  "sideBar": true
 }

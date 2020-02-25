@@ -21,9 +21,15 @@
     "faviconURL": {
       "description": "URL zum Favicon, das angezeigt werden soll",
       "type": "string"
+    },
+    "sideBar": {
+      "description": "Soll eine Sidebar angezeigt werden, wenn der Nutzer eingeloggt ist?",
+      "type": "boolean",
+      "default": true
     }
   },
   "required": [
-    "apiRoot"
+    "apiRoot",
+    "sideBar"
   ]
 }
