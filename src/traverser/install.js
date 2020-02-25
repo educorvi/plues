@@ -18,6 +18,7 @@ const plugin = {
             beforeCreate() {
                 if (this.$options.traverser) {
                     const views = this.$options.traverser.views || [];
+                    this.$options.traverser.options.vue = Vue;
                     const options = this.$options.traverser.options;
 
                     Vue.util.defineReactive(Vue.prototype, '_component', Vue.component(traverserComponent.name, traverserComponent));
@@ -37,6 +38,7 @@ const plugin = {
                     }
 
                     this.$router.beforeEach((to, from, next) => {
+                        this.$router.app.$store.commit("setLoading", true);
                         if (this.$router.getMatchedComponents(to).length) {
                             next();
                             if (to.name === 'home') {

@@ -53,7 +53,7 @@ export function updateComponent({views, path, vm, options}) {
       vm.prototype._component = component;
       vm.prototype._context = context;
     });
-  });
+  }).finally(() => router.app.$store.commit("setLoading", false));
 }
 
 export function traverse(item, router, options) {

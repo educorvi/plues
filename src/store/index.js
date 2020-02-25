@@ -12,7 +12,8 @@ export default new Vuex.Store({
         rootData: null,
         navigation: null,
         authToken: null,
-        users: null
+        users: null,
+        loading: false
     },
     mutations: {
         addNavigationToRootData(state, nav) {
@@ -28,6 +29,9 @@ export default new Vuex.Store({
             Vue.http.interceptors.request.use(interceptor);
             Vue.ls.set("token", token, 60 * 1000 * 60 * 12);
 
+        },
+        setLoading(state, b = true) {
+            state.loading = b;
         }
     },
     actions: {},
@@ -103,7 +107,8 @@ export default new Vuex.Store({
                 Vue.http.interceptors.request.use(interceptor)
             }
             return state.authToken;
-        }
+        },
+        loading: state => state.loading
 
     }
 

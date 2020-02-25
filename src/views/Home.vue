@@ -1,9 +1,10 @@
 <template>
     <div ref="parentSidebar">
         <Breadcrumbs v-if="!$route.query.nonav"/>
-            <b-icon-gear @click="$refs.sidebar.active = true" class="sidebarOpener" font-scale="2.4"
-                         v-if="config.sideBar && token !== null"/>
-        <traverser-view/>
+        <b-icon-gear @click="$refs.sidebar.active = true" class="sidebarOpener" font-scale="2.4"
+                     v-if="config.sideBar && token !== null"/>
+        <traverser-view v-show="!loading"/>
+        <custom-spinner v-if="loading"/>
         <Sidebar ref="sidebar" v-if="config.sideBar && token !== null"/>
     </div>
 </template>
@@ -15,17 +16,18 @@
     import {mapGetters} from "vuex"
     import Sidebar from "@/views/Sidebar";
     import {BIconGear} from "bootstrap-vue"
+    import CustomSpinner from "@/components/Helper/CustomSpinner";
 
     export default {
         /* eslint-disable no-console */
         name: 'home',
-        components: {Sidebar, Breadcrumbs, BIconGear},
+        components: {CustomSpinner, Sidebar, Breadcrumbs, BIconGear},
 
         mounted() {
             this.traverse({"@id": this.$route.path + "?rel"});
         },
         computed: {
-            ...mapGetters(["token", "config"])
+            ...mapGetters(["token", "config", "loading"])
         }
     }
 </script>

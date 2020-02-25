@@ -3,9 +3,7 @@
     <div id="app">
 
         <Topbar v-if="!$route.query.nonav"/>
-        <router-view class="container-fluid fluidsized">
-        </router-view>
-
+        <router-view class="container-fluid fluidsized"/>
 
     </div>
 </template>
@@ -43,11 +41,12 @@
     import axios from "axios";
     import Error from "@/views/Errors/General_Error";
     import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
+    import CustomSpinner from "@/components/Helper/CustomSpinner";
     // import {updateComponent} from "@/traverser/traverser";
 
     export default {
         // eslint-disable-next-line vue/no-unused-components
-        components: {Breadcrumbs, Error, Topbar},
+        components: {CustomSpinner, Breadcrumbs, Error, Topbar},
         computed: {
             ...mapGetters(["config"])
         },
