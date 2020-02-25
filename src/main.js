@@ -54,9 +54,14 @@ Vue.http.interceptors.response.use((response) => { // intercept the global error
     return response;
 }, function (error) {
     console.log(JSON.stringify(error));
-    if (router.currentRoute.name === "home") {
-        router.push("/errors/default");
+    if (router.currentRoute.name === "home" && !error.config.url.includes('@workflow')) {
+        router.app.$root.$bvToast.toast('Darauf konnte nicht zugegriffen werden. Entweder exisiert die Datei nicht, oder du hast kein Zugriffsrecht darauf. (Bist du angemeldet?)', {
+            title: 'Fehler',
+            autoHideDelay: 7000,
+            variant: 'danger'
+        });
     }
+    router.replace('/')
 
 });
 

@@ -10,7 +10,12 @@ export function lookup({views, path, options}) {
     const componentsByType = views.filter(v => v.type === type);
 
     if (!componentsByType.length) {
-      router.push('/errors/contenttyp/' + type);
+      router.app.$root.$bvToast.toast(`Keine Ansicht für den Typ "${type}" gefunden`, {
+        title: 'Fehler',
+        autoHideDelay: 4000,
+        variant: 'danger'
+      });
+      router.go(-1);
       throw new Error(`Component for type "${type}" could not be found`);
     }
 

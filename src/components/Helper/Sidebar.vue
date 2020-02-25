@@ -107,7 +107,9 @@
         watch: {
             //Lädt die Workflows nach, wenn sich die Route ändert
             "$route.path": function () {
-                this.getWorkflows();
+                if (this.$route.name === 'home') {
+                    this.getWorkflows();
+                }
                 this.active = false;
             },
             active: function () {
