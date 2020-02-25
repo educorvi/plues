@@ -8,12 +8,16 @@ import BootstrapVue from "bootstrap-vue";
 import './style.scss';
 import axios from 'axios';
 import Storage from "vue-ls";
-import Vuesax from 'vuesax'
-import 'vuesax/dist/vuesax.css'
-import 'material-icons/iconfont/material-icons.css';
 
 
 Vue.config.productionTip = false;
+
+
+import VueMaterial from 'vue-material'
+import 'vue-material/dist/vue-material.min.css'
+import 'vue-material/dist/theme/default.css'
+
+Vue.use(VueMaterial);
 
 
 const options = {
@@ -58,8 +62,6 @@ Vue.http.interceptors.response.use((response) => { // intercept the global error
 
 
 Vue.use(BootstrapVue);
-
-Vue.use(Vuesax);
 
 
 let config = {};

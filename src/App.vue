@@ -1,8 +1,8 @@
 <!--suppress CssUnusedSymbol -->
 <template>
     <div id="app">
-
-        <Topbar v-if="!$route.query.nonav"/>
+        <Sidebar :navitems="navigation" ref="sidebar"/>
+        <Topbar @active="$refs.sidebar.active = !$refs.sidebar.active" v-if="!$route.query.nonav"/>
         <router-view class="container-fluid fluidsized"/>
 
     </div>
@@ -42,13 +42,16 @@
     import Error from "@/views/Errors/General_Error";
     import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
     import CustomSpinner from "@/components/Helper/CustomSpinner";
-    // import {updateComponent} from "@/traverser/traverser";
+    import Sidebar from "@/components/Helper/Sidebar";
 
     export default {
         // eslint-disable-next-line vue/no-unused-components
-        components: {CustomSpinner, Breadcrumbs, Error, Topbar},
+        components: {Sidebar, CustomSpinner, Breadcrumbs, Error, Topbar},
         computed: {
-            ...mapGetters(["config"])
+            ...mapGetters(["config", "navigation"])
+        },
+        data() {
+            return {}
         },
         created() {
             axios.get('/config.json').then(res => {

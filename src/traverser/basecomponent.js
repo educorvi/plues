@@ -8,8 +8,8 @@ const basecomponent = {
     const link = createTraverserLink(this.context, this.config);
     if (link !== this.$route.fullPath) {
       const to = this.$route.fullPath;
-      this.$router.replace("/");
-      this.$router.replace(to);
+      this.$router?.replace("/");
+      this.$router?.replace(to);
     }
   },
   computed: {

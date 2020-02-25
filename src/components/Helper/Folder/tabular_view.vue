@@ -1,39 +1,25 @@
 <template>
     <div>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">Titel</th>
-                <th scope="col" v-if="token!==null">Ersteller</th>
-                <th scope="col">Inhaltstyp</th>
-                <th scope="col">Zuletzt bearbeitet</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr :key="item['@id']" v-for="item in items">
-                <td>
-                    <traverser-link :class="item.title" :item="item">
-                        {{item.title}}
-                    </traverser-link>
-                </td>
-                <td v-if="token!==null">
-                    {{getNames(item.creators)}}
-                </td>
-                <td>
-                    {{item["@type"]}}
-                </td>
-                <td>
-                    {{new Date(item.modified).toLocaleString()}}
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <b-table :fields="fields" :items="items" responsive>
+            <template v-slot:cell(title)="data">
+                <router-link :to="createTravLink(data.item)">{{data.item.title}}</router-link>
+            </template>
+
+            <template v-slot:cell(creators)="data">
+                {{getNames(data.item.creators)}}
+            </template>
+
+            <template v-slot:cell(modified)="data">
+                {{new Date(data.item.modified).toLocaleString()}}
+            </template>
+        </b-table>
 
     </div>
 </template>
 
 <script>
     import {mapGetters} from "vuex"
+    import {createTraverserLink} from "@/traverser/normalizer";
 
     // Folder Ansicht, die Plones Tabular View entspricht
     // @group Helper/Folder
@@ -46,12 +32,25 @@
                 required: true
             }
         },
+        data() {
+            return {
+                fields: [
+                    {key: 'title', label: 'Titel'},
+                    {key: 'creators', label: 'Ersteller'},
+                    {key: '@type', label: 'Inhaltstyp'},
+                    {key: 'modified', label: 'Zuletzt bearbeitet'}
+                ]
+            }
+        },
         computed: {
-            ...mapGetters(["token"])
+            ...mapGetters(["token", "config"])
         },
         methods: {
             //Ruft die Namen der Autoren ab
             getNames(creators) {
+                if (creators === undefined) {
+                    return '';
+                }
                 let str = '';
                 for (let i = 0; i < creators.length; i++) {
                     let creator = creators[i];
@@ -61,6 +60,9 @@
                     }
                 }
                 return str;
+            },
+            createTravLink(item) {
+                return createTraverserLink(item, this.config);
             }
         },
     }
