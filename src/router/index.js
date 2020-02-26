@@ -15,11 +15,6 @@ const routes = [
     name: 'mcterror',
     component: () => import("@/views/Errors/Missing_Contenttype_Error")
   },
-  // {
-  //   path: '*',
-  //   name: 'home',
-  //   component: Home
-  // }
   {
     path: '*',
     name: 'home',
