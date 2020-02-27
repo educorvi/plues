@@ -2,7 +2,7 @@
 <template>
     <div id="app">
         <Sidebar :navitems="navigation" ref="sidebar"/>
-        <Topbar @active="$refs.sidebar.active = !$refs.sidebar.active" v-if="!$route.query.nonav"/>
+        <Topbar @sidebar="$refs.sidebar.active = !$refs.sidebar.active" v-if="!$route.query.nonav"/>
         <router-view class="container-fluid fluidsized"/>
 
     </div>
@@ -38,7 +38,6 @@
 <script>
     import Topbar from "@/components/Navigation/Topbar";
     import {mapGetters} from 'vuex';
-    import axios from "axios";
     import Error from "@/views/Errors/General_Error";
     import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
     import CustomSpinner from "@/components/Helper/CustomSpinner";
@@ -54,7 +53,7 @@
             return {}
         },
         created() {
-            axios.get('/config.json').then(res => {
+            this.http.get('/config.json').then(res => {
                 let link = document.querySelector("link[rel*='icon']") || document.createElement('link');
                 link.type = 'image/x-icon';
                 link.rel = 'shortcut icon';

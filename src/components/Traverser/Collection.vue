@@ -17,7 +17,6 @@
 
     import basecomponent from "@/traverser/basecomponent";
     import CollectionCard from "@/components/Helper/Collection/CollectionCard";
-    import axios from "axios"
     import CustomSpinner from "@/components/Helper/CustomSpinner";
 
     // @group TraverserViews
@@ -33,11 +32,7 @@
             }
         },
         mounted() {
-            axios.get(this.context["@id"] + "/?metadata_fields=modified&metadata_fields=start", {
-                headers: {
-                    Accept: "application/json"
-                }
-            }).then(res => this.data = res.data)
+            this.http.get(this.context["@id"] + "/?metadata_fields=modified&metadata_fields=start").then(res => this.data = res.data)
         }
     }
 </script>

@@ -3,7 +3,6 @@
         <b-navbar-brand @click="traverse(rootData)">
             <div class="navbar-brand">
                 <img alt="Logo" id="logo" src="../../assets/logo.png">
-                <!--                <h5 class="ml-2" style="display: inline;"></h5>-->
             </div>
         </b-navbar-brand>
 
@@ -15,13 +14,15 @@
                 <b-button @click="logout" v-else>Logout</b-button>
             </span>
 
+<!--            Button zum Öffnen der Sidebar-->
             <span>
-                <h2 @click="$emit('active')" class="m-0"><b-icon-list/></h2>
+                <h2 @click="$emit('sidebar')" class="m-0"><b-icon-list/></h2>
             </span>
 
         </b-nav-form>
 
 
+        <!--        Login Modal-->
         <b-modal hide-footer id="loginModal" title="Login">
             <b-form @submit="login">
                 <b-form-invalid-feedback :state="validationState">
@@ -61,10 +62,7 @@
 </template>
 
 <script>
-    /* eslint-disable no-console */
-    /* eslint-disable no-unused-vars */
-    import {mapGetters, mapMutations} from 'vuex';
-    import axios from 'axios';
+    import {mapGetters} from 'vuex';
     import {BIconList} from "bootstrap-vue";
 
     // @vuese
@@ -92,28 +90,23 @@
             login(evt) {
                 evt.preventDefault();
                 //Versuch des Logins mit den angebenen Daten
-                axios.post(this.config.rootURL + "@login", {
+                this.http.post(this.config.rootURL + "@login", {
                     login: this.form.user,
                     password: this.form.pass
-                }, {
-                    headers: {
-                        Accept: "application/json"
-                    }
                 }).then(res => {
                     //War der Login erfolgreich, wird das Modal verborgen und der Token gespeichert
                     this.$bvModal.hide('loginModal');
                     this.validationState = null;
                     this.$store.commit('setAuthToken', res.data.token);
-                    console.log("Erfolg");
                     location.reload();
-                }).catch(res => {
+                }).catch(() => {
                     //Wenn die angegebenen Daten falsch waren, wird das an den Nutzer ausgegeben
                     this.validationState = false;
-                    console.log("Fehler");
                 });
             },
             //Beim Abmelden wird der Token zurückgesetzt
             logout() {
+                this.http.post(this.config.rootURL + "@logout");
                 this.$store.commit('setAuthToken', null);
                 location.reload();
             }

@@ -99,12 +99,6 @@ export default new Vuex.Store({
         token: state => {
             if (state.authToken === null) {
                 state.authToken = Vue.ls.get("token", null);
-                const interceptor = function (config) {
-                    config.headers.Authorization = 'bearer ' + state.authToken;
-                    return config;
-                };
-                axios.interceptors.request.use(interceptor);
-                Vue.http.interceptors.request.use(interceptor)
             }
             return state.authToken;
         },

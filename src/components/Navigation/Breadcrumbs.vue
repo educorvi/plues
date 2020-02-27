@@ -14,7 +14,6 @@
 </template>
 
 <script>
-    import axios from "axios";
     import {mapGetters} from "vuex";
     import {BIconHouseFill} from "bootstrap-vue";
 
@@ -49,11 +48,7 @@
         },
         watch: {
             breadcrumbsURL: function () {
-                axios.get(this.breadcrumbsURL, {
-                    headers: {
-                        Accept: "application/json"
-                    }
-                }).then(res => {
+                this.http.get(this.breadcrumbsURL).then(res => {
                     this.breadcrumbs = res.data.items;
                 });
 

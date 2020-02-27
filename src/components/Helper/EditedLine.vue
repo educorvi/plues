@@ -4,7 +4,6 @@
 </template>
 <script>
     import {mapGetters} from "vuex";
-    import axios from "axios";
     //Dieser Component gibt Information darüber, wann das Dokument zum letzten mal von wem bearbeitet wurde
     //@group Helper
     export default {
@@ -41,11 +40,7 @@
             if (this.token !== null) {
                 for (let i = 0; i < this.context.creators.length; i++) {
                     let creator = this.context.creators[i];
-                    axios.get(this.config.rootURL + "@users/" + creator, {
-                        headers: {
-                            Accept: "application/json"
-                        }
-                    }).then(res => {
+                    this.http.get(this.config.rootURL + "@users/" + creator).then(res => {
                         this.lineString += res.data.fullname;
                         if (!(i === this.context.creators.length - 1)) {
                             this.lineString += ", "
