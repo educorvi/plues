@@ -21,4 +21,7 @@ yarn-error.log*
 *.sw?
 /package-lock.json
 /venv/
+
+
 /public/config.json
+/gitctl.php
