@@ -5,13 +5,31 @@
                 <span class="md-title" v-if="rootData">{{rootData.title}}</span>
             </md-toolbar>
 
-            <md-list :key="index" v-for="(item, index) in navitems">
+            <md-list>
+                <span @click="$bvModal.show('worflowsModal')" class="mt-2" v-if="token !== null">
+                    <md-list-item v-b-toggle="'collapse-workflows'">
+                    <p>
+                        <b-icon-gear-fill variant="primary"/>
+                        Workflows
+                    </p>
+                    </md-list-item>
 
-            <span v-if="item.title !=='Home'">
-                <md-list-item :to="getTo(item)" v-if="item.items.length===0">
+                    <b-collapse accordion="sidebar" class="subgroup" id="collapse-workflows">
+                        <md-list-item :key="lItem.title"
+                                      @click="() => {executeWorkflow(lItem['@id']); active=false}"
+                                      v-for="(lItem) in workflows">
+                            {{lItem.title}}
+                        </md-list-item>
+                    </b-collapse>
+                    <md-divider/>
+                </span>
+
+                <span :key="index" v-for="(item, index) in navitems">
+                <span v-if="item.title !=='Home'">
+                    <md-list-item :to="getTo(item)" v-if="item.items.length===0">
                     {{item.title}}
                 </md-list-item>
-                <span v-else>
+                    <span v-else>
                     <md-list-item v-b-toggle="'collapse-'+index">
                         <b :class="isActive(item)?'text-primary':'text-black'">{{item.title}}</b>
                     </md-list-item>
@@ -30,9 +48,14 @@
                 <md-divider v-if="index<navitems.length-1"></md-divider>
             </span>
 
-
+            </span>
             </md-list>
         </md-drawer>
+
+
+        <b-modal id="workflowsModal">
+
+        </b-modal>
     </div>
 </template>
 <script>
@@ -40,9 +63,13 @@
     //Hierbei handelt es sich um eine SideBar, in der die Workflows verwendet werden können
     import {mapGetters} from "vuex";
     import {createTraverserLink} from "@/traverser/normalizer";
+    import {BIconGearFill} from "bootstrap-vue";
 
     export default {
         name: 'Sidebar',
+        components: {
+            BIconGearFill
+        },
         data() {
             return {
                 workflows: [],
@@ -102,7 +129,7 @@
             }
         },
         computed: {
-            ...mapGetters(["config", "rootData"])
+            ...mapGetters(["config", "rootData", "token"])
         },
         watch: {
             //Lädt die Workflows nach, wenn sich die Route ändert
