@@ -25,3 +25,4 @@ yarn-error.log*
 
 /public/config.json
 /gitctl.php
+/gitctl.sh
