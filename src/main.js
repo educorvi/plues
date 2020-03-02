@@ -6,12 +6,15 @@ import axios from 'axios';
 
 Vue.config.productionTip = false;
 
-//Vue Material (Für die SideBar) @Todo Nur benötigte Komponenten einbinden
-import VueMaterial from 'vue-material'
+//Vue Material (Für die SideBar)
+import {MdDrawer, MdToolbar, MdList, MdDivider} from 'vue-material/dist/components'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 
-Vue.use(VueMaterial);
+Vue.use(MdDrawer);
+Vue.use(MdToolbar);
+Vue.use(MdList);
+Vue.use(MdDivider);
 
 
 //Vue Storage
