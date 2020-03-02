@@ -165,10 +165,13 @@
     }
 
     .drawer {
-        margin-top: 10vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding-top: 10vh;
         overflow-x: auto;
         padding-bottom: 8vh;
-        height: 90vh;
+        height: 100vh;
     }
 
     ul {
