@@ -8,7 +8,7 @@
             <md-list>
                 <span class="mt-2" v-if="token !== null && !(config.workflows===false) && workflows.length>0">
                     <md-list-item v-b-toggle="'collapse-workflows'">
-                    <p>
+                    <p class="mb-0">
                         <b-icon-gear-fill variant="primary"/>
                         Workflows
                     </p>
