@@ -21,6 +21,11 @@
     "faviconURL": {
       "description": "URL zum Favicon, das angezeigt werden soll",
       "type": "string"
+    },
+    "workflows": {
+      "description": "Gibt an, ob Workflows verfügbar sein sollen",
+      "type": "boolean",
+      "default": true
     }
   },
   "required": [

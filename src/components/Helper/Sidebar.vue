@@ -6,7 +6,7 @@
             </md-toolbar>
 
             <md-list>
-                <span @click="$bvModal.show('worflowsModal')" class="mt-2" v-if="token !== null">
+                <span class="mt-2" v-if="token !== null && !(config.workflows===false) && workflows.length>0">
                     <md-list-item v-b-toggle="'collapse-workflows'">
                     <p>
                         <b-icon-gear-fill variant="primary"/>
@@ -51,11 +51,6 @@
             </span>
             </md-list>
         </md-drawer>
-
-
-        <b-modal id="workflowsModal">
-
-        </b-modal>
     </div>
 </template>
 <script>
