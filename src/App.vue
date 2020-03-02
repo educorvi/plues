@@ -1,4 +1,3 @@
-<!--suppress CssUnusedSymbol -->
 <template>
     <div id="app">
         <Sidebar :navitems="navigation" ref="sidebar"/>
@@ -29,7 +28,7 @@
 
     @media (min-width: 992px) {
         .fluidsized {
-            max-width: 80%;
+            max-width: 1000px;
         }
 
     }
