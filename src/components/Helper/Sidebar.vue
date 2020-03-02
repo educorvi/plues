@@ -6,7 +6,8 @@
             </md-toolbar>
 
             <md-list>
-                <span class="mt-2" v-if="token !== null && !(config.workflows===false) && workflows.length>0">
+                <span class="mt-2"
+                      v-if="token !== null && !(config !== undefined && config.workflows===false) && workflows.length>0">
                     <md-list-item v-b-toggle="'collapse-workflows'">
                     <p class="mb-0">
                         <b-icon-gear-fill variant="primary"/>
@@ -75,8 +76,7 @@
         },
         props: {
             navitems: {
-                type: Array,
-                required: true
+                type: Array
             }
         },
         created() {
@@ -85,8 +85,11 @@
         methods: {
             //Ruft die Workflows ab
             getWorkflows() {
-                const url = this.config.apiRoot + this.config.ploneRoot + this.$route.fullPath + "/@workflow";
-                this.http.get(url, {headers: {Accept: "application/json"}}).then(res => this.workflows = res.data.transitions);
+                if (this.config !== undefined) {
+                    const url = this.config.apiRoot + this.config.ploneRoot + this.$route.fullPath + "/@workflow";
+                    this.http.get(url, {headers: {Accept: "application/json"}}).then(res => this.workflows = res.data.transitions);
+                }
+
             },
             //Führt einen ausgewählten Workflow aus
             executeWorkflow(postURL) {
