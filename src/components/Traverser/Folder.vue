@@ -1,41 +1,28 @@
 <template>
     <section id="folder">
-        <div v-if="stay">
+        <div>
             <h1>{{context.title}}</h1>
             <p>{{context.description}}</p>
-            <tabular_view :items="context.items" v-if="context.layout==='tabular_view'"/>
-            <listing_view :items="context.items" v-else/>
+            <tabular_view :items="context.items.filter((item) => !item.excludeFromDisplay)"
+                          v-if="context.layout==='tabular_view'"/>
+            <listing_view :items="context.items.filter((item) => !item.excludeFromDisplay)" v-else/>
         </div>
-        <CustomSpinner v-else/>
-        <!--        <Batcher :item="context" v-if="context.batching!==null"/>-->
     </section>
 </template>
 
 <script>
     import basecomponent from "@/traverser/basecomponent";
-    import CustomSpinner from "@/components/Helper/CustomSpinner";
-    // import enhanced_folderlist from "@/components/Helper/Folder/enhanced_folderlist";
     import tabular_view from "@/components/Helper/Folder/tabular_view";
     import listing_view from "@/components/Helper/Folder/listing_view";
 
     // @group TraverserViews
     //Component um Plone Folders darzustellen
     export default {
-        components: {listing_view, tabular_view, CustomSpinner},
+        components: {listing_view, tabular_view},
         mixins: [basecomponent],
         name: "Folder",
         data() {
-            return {
-                //Wenn nicht auf Collection weitergeleitet wird, wird es auf true gesetzt
-                stay: false
-            }
-        },
-        mounted() {
-            if (this.context.items.length > 0 && this.context.items[0]["@type"] === "Collection") {
-                this.traverse(this.context.items[0]);
-            } else {
-                this.stay = true;
-            }
+            return {}
         }
     }
 </script>

@@ -7,6 +7,7 @@ export const setDefaultInterceptor = (Vue, includedPath = null) => {
             params.append("metadata_fields", "modified");
             params.append("metadata_fields", "creators");
             params.append("metadata_fields", "start");
+            params.append("metadata_fields", "excludeFromDisplay");
             config.params = params;
         }
 

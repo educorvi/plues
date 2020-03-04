@@ -10,7 +10,6 @@ Vue.config.productionTip = false;
 import {MdDrawer, MdToolbar, MdList, MdDivider} from 'vue-material/dist/components'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
-
 Vue.use(MdDrawer);
 Vue.use(MdToolbar);
 Vue.use(MdList);
@@ -24,37 +23,39 @@ const options = {
     storage: 'local', // storage name session, local, memory
 };
 import Storage from "vue-ls";
-
 Vue.use(Storage, options);
+
 
 //Traverser aus eigenem modifiziertem Code
 import Traverser from '@/traverser/install';
-
 Vue.use(Traverser);
+
 
 //BootstrapVue
 import BootstrapVue from "bootstrap-vue";
 import './style.scss';
-
 Vue.use(BootstrapVue);
 
 
 //Set Interceptors for axios (default erst wenn config.json gelesen)
 import {setLoginInterceptor, setDefaultInterceptor, setDefaultErrorCatcher} from "@/./interceptors";
-
 setLoginInterceptor(Vue);
 setDefaultErrorCatcher(Vue);
+
 
 //Laden der config.json
 let config = {};
 axios.get("/config.json").then(res => {
     config = res.data;
+    //Setzen des default Interceptors
     setDefaultInterceptor(Vue, config.apiRoot);
 
-    //Starten von Vue
+    //Vueinstanz
     new Vue({
         router,
         store,
+
+        //Traverser Konfiguration
         traverser: {
             views: [
                 {
