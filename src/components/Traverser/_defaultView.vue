@@ -19,7 +19,7 @@
     import EditedLine from "../Helper/EditedLine";
 
     // @group TraverserViews
-    //Component um Plone NewsItems darzustellen
+    //Falls für einen Type keine View gefunden wird, kann diese generalisierte View verwendet werden
     export default {
         components: {EditedLine},
         mixins: [basecomponent],

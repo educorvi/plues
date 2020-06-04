@@ -1,6 +1,6 @@
 # Batcher
 
-eslint-disable no-console Dieser Component ist ein Navigator für Seiten mit Batching
+Dieser Component ist ein Navigator für Seiten mit Batching
 
 ## Props
 
