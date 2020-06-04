@@ -9,8 +9,8 @@
 <script>
     /* eslint-disable no-console */
 
-    import basecomponent from "@/traverser/basecomponent";
-    import EditedLine from "@/components/Helper/EditedLine";
+    import basecomponent from "../../traverser/basecomponent";
+    import EditedLine from "../Helper/EditedLine";
     // @group TraverserViews
     //Component um Plone Documents darzustellen
     export default {

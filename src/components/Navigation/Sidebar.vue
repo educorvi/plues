@@ -59,7 +59,7 @@
     //@group Navigation
     //Hierbei handelt es sich um eine SideBar, in der die Workflows verwendet werden können
     import {mapGetters} from "vuex";
-    import {createTraverserLink} from "@/traverser/normalizer";
+    import {createTraverserLink} from "../../traverser/normalizer";
     import {BIconGearFill} from "bootstrap-vue";
 
     export default {

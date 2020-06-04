@@ -14,8 +14,8 @@
 </template>
 
 <script>
-    import basecomponent from "@/traverser/basecomponent";
-    import CustomSpinner from "@/components/Helper/CustomSpinner";
+    import basecomponent from "../../traverser/basecomponent";
+    import CustomSpinner from "../Helper/CustomSpinner";
 
     export default {
         name: "ImageItem",

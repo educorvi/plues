@@ -13,7 +13,7 @@
 </template>
 
 <script>
-    import EditedLine from "@/components/Helper/EditedLine";
+    import EditedLine from "../../Helper/EditedLine";
 
     // Folder Ansicht, die Plones listing view entspricht
     // @group Helper/Folder

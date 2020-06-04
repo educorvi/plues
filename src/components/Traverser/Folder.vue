@@ -11,9 +11,9 @@
 </template>
 
 <script>
-    import basecomponent from "@/traverser/basecomponent";
-    import tabular_view from "@/components/Helper/Folder/tabular_view";
-    import listing_view from "@/components/Helper/Folder/listing_view";
+    import basecomponent from "../../traverser/basecomponent";
+    import tabular_view from "../Helper/Folder/tabular_view";
+    import listing_view from "../Helper/Folder/listing_view";
 
     // @group TraverserViews
     //Component um Plone Folders darzustellen

@@ -40,12 +40,12 @@
 
 </style>
 <script>
-    import Topbar from "@/components/Navigation/Topbar";
+    import Topbar from "./components/Navigation/Topbar";
     import {mapGetters} from 'vuex';
-    import Error from "@/views/Errors/General_Error";
-    import Breadcrumbs from "@/components/Navigation/Breadcrumbs";
-    import CustomSpinner from "@/components/Helper/CustomSpinner";
-    import Sidebar from "@/components/Helper/Sidebar";
+    import Error from "./views/Errors/General_Error";
+    import Breadcrumbs from "./components/Navigation/Breadcrumbs";
+    import CustomSpinner from "./components/Helper/CustomSpinner";
+    import Sidebar from "./components/Navigation/Sidebar";
 
     export default {
         // eslint-disable-next-line vue/no-unused-components

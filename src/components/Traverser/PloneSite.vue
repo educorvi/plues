@@ -14,8 +14,8 @@
 <script>
     /* eslint-disable no-console */
 
-    import basecomponent from "@/traverser/basecomponent";
-    import CollectionCard from "@/components/Helper/Collection/CollectionCard";
+    import basecomponent from "../../traverser/basecomponent";
+    import CollectionCard from "../Helper/Collection/CollectionCard";
 
     // @group TraverserViews
     // Component um Plone Collections darzustellen

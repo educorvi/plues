@@ -8,8 +8,8 @@
 </template>
 
 <script>
-    import basecomponent from "@/traverser/basecomponent";
-    import EditedLine from "@/components/Helper/EditedLine";
+    import basecomponent from "../../traverser/basecomponent";
+    import EditedLine from "../Helper/EditedLine";
 
     // @group TraverserViews
     //Component um Plone NewsItems darzustellen

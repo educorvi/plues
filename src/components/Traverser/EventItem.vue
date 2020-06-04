@@ -47,10 +47,10 @@
 </template>
 
 <script>
-    import basecomponent from "@/traverser/basecomponent";
-    import TimeDurationDisplay from "@/components/Helper/EventItem/TimeDurationDisplay";
-    import Subcard from "@/components/Helper/EventItem/Subcard";
-    import EditedLine from "@/components/Helper/EditedLine";
+    import basecomponent from "../../traverser/basecomponent";
+    import TimeDurationDisplay from "../Helper/EventItem/TimeDurationDisplay";
+    import Subcard from "../Helper/EventItem/Subcard";
+    import EditedLine from "../Helper/EditedLine";
     import {mapGetters} from 'vuex';
 
     // @group TraverserViews

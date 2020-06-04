@@ -19,7 +19,7 @@
 
 <script>
     import {mapGetters} from "vuex"
-    import {createTraverserLink} from "@/traverser/normalizer";
+    import {createTraverserLink} from "../../../traverser/normalizer";
 
     // Folder Ansicht, die Plones Tabular View entspricht
     // @group Helper/Folder
