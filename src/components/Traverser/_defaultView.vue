@@ -8,7 +8,7 @@
             <template v-slot:header>Default View</template>
 
             <template v-slot:lead>
-                Für diesen Contenttype wurde noch keine Ansicht erstellt, deshalb wird diese Standardansicht angezeigt.
+                Für den Contenttype "{{context["@type"]}}" wurde noch keine Ansicht erstellt, deshalb wird diese Standardansicht angezeigt.
             </template>
         </b-jumbotron>
     </section>
