@@ -38,6 +38,13 @@
         @extend .table;
     }
 
+    *::selection {
+        background: $primary !important;
+    }
+    *::-moz-selection {
+        background: $primary !important;
+    }
+
 </style>
 <script>
     import Topbar from "./components/Navigation/Topbar";
