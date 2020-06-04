@@ -38,7 +38,7 @@ Vue.use(BootstrapVue);
 
 
 //Set Interceptors for axios (default erst wenn config.json gelesen)
-import {setLoginInterceptor, setDefaultInterceptor, setDefaultErrorCatcher} from "@/./interceptors";
+import {setLoginInterceptor, setDefaultInterceptor, setDefaultErrorCatcher} from "./interceptors";
 setLoginInterceptor(Vue);
 setDefaultErrorCatcher(Vue);
 
