@@ -2,12 +2,12 @@
     <div>
         <h1>{{context.title}}</h1>
         <b-row>
-            <b-col v-if="context.description">
-                <p>{{context.description}}</p>
-            </b-col>
-            <b-col>
+            <b-col :lg="context.description?6:12" sm="12">
                 <b-img :alt="'Bild '+context.title" :src="imageBase64" fluid v-if="imageBase64"/>
                 <custom-spinner v-else/>
+            </b-col>
+            <b-col v-if="context.description" lg="6" sm="12">
+                <p>{{context.description}}</p>
             </b-col>
         </b-row>
     </div>
