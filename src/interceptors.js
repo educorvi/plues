@@ -1,4 +1,4 @@
-import router from "@/router";
+import router from "./router";
 
 export const setDefaultInterceptor = (Vue, includedPath = null) => {
     const interceptor = function (config) {
@@ -38,14 +38,14 @@ export const setDefaultErrorCatcher = (Vue) => {
     Vue.http.interceptors.response.use((response) => {
         return response;
     }, function (error) {
-        if (router.currentRoute.name === "home" && !error.config.url.includes('@workflow') && !error.config.url.includes('@breadcrumbs')) {
+        if (router.currentRoute.name === "home" && !error.config.url.includes('@workflow') && !error.config.url.includes('@login') && !error.config.url.includes('@breadcrumbs')) {
             router.app.$root.$bvToast.toast('Darauf konnte nicht zugegriffen werden. Entweder exisiert die Datei nicht, oder du hast kein Zugriffsrecht darauf. (Bist du angemeldet?)', {
                 title: 'Fehler',
                 autoHideDelay: 7000,
                 variant: 'danger'
             });
+            router.replace('/')
         }
-        router.replace('/')
 
     });
 };

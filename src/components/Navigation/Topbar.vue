@@ -95,9 +95,9 @@
                     password: this.form.pass
                 }).then(res => {
                     //War der Login erfolgreich, wird das Modal verborgen und der Token gespeichert
-                    this.$bvModal.hide('loginModal');
                     this.validationState = null;
                     this.$store.commit('setAuthToken', res.data.token);
+                    this.$bvModal.hide('loginModal');
                     location.reload();
                 }).catch(() => {
                     //Wenn die angegebenen Daten falsch waren, wird das an den Nutzer ausgegeben
