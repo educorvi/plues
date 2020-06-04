@@ -56,6 +56,7 @@
 </template>
 <script>
     //@vuese
+    //@group Navigation
     //Hierbei handelt es sich um eine SideBar, in der die Workflows verwendet werden können
     import {mapGetters} from "vuex";
     import {createTraverserLink} from "@/traverser/normalizer";
@@ -75,6 +76,7 @@
             }
         },
         props: {
+            //Die anzuzeigenden Navigationspunkte
             navitems: {
                 type: Array
             }
