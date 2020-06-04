@@ -1,0 +1,32 @@
+<template>
+    <section id="news">
+        <h2>{{context.title}}</h2>
+        <h6>{{context.description}}</h6>
+        <EditedLine :context="context" nofloat/>
+
+        <b-jumbotron>
+            <template v-slot:header>Default View</template>
+
+            <template v-slot:lead>
+                Für diesen Contenttype wurde noch keine Ansicht angegeben, deshalb wird diese Standardansicht angezeigt.
+            </template>
+        </b-jumbotron>
+    </section>
+</template>
+
+<script>
+    import basecomponent from "../../traverser/basecomponent";
+    import EditedLine from "../Helper/EditedLine";
+
+    // @group TraverserViews
+    //Component um Plone NewsItems darzustellen
+    export default {
+        components: {EditedLine},
+        mixins: [basecomponent],
+        name: "defaultView"
+    }
+</script>
+
+<style scoped>
+
+</style>

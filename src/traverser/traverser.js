@@ -7,7 +7,11 @@ import router from "@/router";
 export function lookup({views, path, options}) {
   return resolve(path, options).then(({res, view}) => {
     const type = res['@type'];
-    const componentsByType = views.filter(v => v.type === type);
+    let componentsByType = views.filter(v => v.type === type);
+
+    if (!componentsByType.length) {
+      componentsByType = views.filter(v => v.type === '*');
+    }
 
     if (!componentsByType.length) {
       router.app.$root.$bvToast.toast(`Keine Ansicht für den Typ "${type}" gefunden`, {
