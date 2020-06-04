@@ -33,6 +33,11 @@
 
     }
 
+    table{
+        border: none;
+        @extend .table;
+    }
+
 </style>
 <script>
     import Topbar from "@/components/Navigation/Topbar";
