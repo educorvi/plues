@@ -94,6 +94,11 @@ axios.get("/config.json").then(res => {
                     view: 'view',
                     component: () => import('./components/Traverser/ImageItem')
                 },
+                {
+                    type: '*',
+                    view: 'view',
+                    component: () => import('./components/Traverser/_defaultView')
+                }
             ],
             options: {
                 apiRoot: config.apiRoot,
